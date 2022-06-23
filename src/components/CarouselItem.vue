@@ -4,7 +4,7 @@
           <h1>{{ text1 }}</h1>
           <h3>{{ text2 }}</h3>
           <p>{{  text3 }}</p>
-          <el-button round>立即咨询</el-button>
+          <el-button round @click="asking">立即咨询</el-button>
       </div>
       <div class="right">
           <!-- <img src="@/assets/img1.png" alt="图片未加载"> -->
@@ -16,7 +16,12 @@
 <script>
 export default {
     name: 'CarouselItem',
-    props:['imgurl', 'text1', 'text2', 'text3']
+    props:['imgurl', 'text1', 'text2', 'text3'],
+    methods: {
+      asking() {
+        console.log(1);
+      }
+    }
 }
 </script>
 

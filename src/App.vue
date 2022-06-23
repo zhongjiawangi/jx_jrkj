@@ -13,7 +13,6 @@
             v-for="(item, index) in menulist"
             :key="index"
             class="menu-item"
-            :id="item.id"
             @click="jump(item)"
           >
             {{ item.name }}
@@ -32,7 +31,7 @@ export default {
       menulist: [
         {
           name: "首页",
-          id: "home",
+          id: "carousel",
         },
         {
           name: "服务",
@@ -60,18 +59,26 @@ export default {
         }
         if (item.id) {
           if (this.$route.path === '/') {
-            var id = document.querySelector(`#${item.id}`)
-            console.log(id.offsetTop);
+            var top = document.querySelector(`.${item.id}`).offsetTop
+            window.scroll(0,top)
             return 
           }
           this.$router.push({ path: '/' })
         }
     },
+    scroll() {
+      var scroll_top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+      console.log(scroll_top);
+    }
   },
+  mounted() {
+    window.addEventListener('scroll', this.scroll)
+  }
 };
 </script>
 <style lang="less" scoped>
 #app {
+  overflow-y: hidden;
   margin-bottom: 0.375rem;
   .top {
     background-color: rgb(28, 102, 222);
