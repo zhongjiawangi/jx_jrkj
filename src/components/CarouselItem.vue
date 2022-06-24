@@ -1,5 +1,5 @@
 <template>
-  <div class="CarouselItem w_c">
+  <div class="CarouselItem">
       <div class="left">
           <h1>{{ text1 }}</h1>
           <h3>{{ text2 }}</h3>
