@@ -8,4 +8,12 @@ module.exports = defineConfig({
     //         jQuery: 'jquery',
     //     }),
     // ],
+    chainWebpack: config => {
+        config
+          .plugin('html')
+          .tap(args => {
+            args[0].title= '江若科技'
+            return args
+          })
+      }
 })

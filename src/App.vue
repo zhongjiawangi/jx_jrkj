@@ -6,7 +6,7 @@
       <div class="container w_c">
         <div class="logo">
           <img src="@/assets/logo.png" alt="" />
-          <span class="test">剑邑快保</span>
+          <span class="test">江若科技</span>
         </div>
         <nav class="nav">
           <div v-for="(item, index) in menulist" :key="index" class="menu-item" @click="jump(item)">
@@ -84,7 +84,6 @@ export default {
         document.body.scrollTop ||
         0
       // var scrool_bottom = document.documentElement
-      console.log(window.pageYOffset)
       return scroll_top
     },
     animate(obj, target, callback) {
@@ -93,12 +92,18 @@ export default {
       // 先清除以前的定时器，只保留当前的一个定时器执行
       clearInterval(obj.timer)
       obj.timer = setInterval(function () {
+        // 窗口高度
+        var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        // 页面高度
+        var documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        // 滚动条位置
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         // 步长值写到定时器的里面
         // 把我们步长值改为整数 不要出现小数的问题
         // var step = Math.ceil((target - obj.offsetLeft) / 10);
         var step = (target - window.pageYOffset) / 10
         step = step > 0 ? Math.ceil(step) : Math.floor(step)
-        if (window.pageYOffset == target) {
+        if ((scrollTop + windowHeight == documentHeight) || window.pageYOffset == target) {
           // 停止动画 本质是停止定时器
           clearInterval(obj.timer)
           // 回调函数写到定时器结束里面
@@ -157,7 +162,7 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 100px;
+        height: 1.25rem;
 
         .menu-item {
           display: block;

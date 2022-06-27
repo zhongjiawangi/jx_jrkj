@@ -3,27 +3,16 @@
         <!-- 轮播图 -->
         <div class="carousel">
             <el-carousel :interval="5000" height="10rem">
-                <el-carousel-item
-                    v-for="(item, index) in carousel"
-                    :key="index"
-                >
-                    <CarouselItem
-                        :text1="item.text1"
-                        :text2="item.text2"
-                        :text3="item.text3"
-                        :imgurl="item.imgurl"
-                    />
+                <el-carousel-item v-for="(item, index) in carousel" :key="index">
+                    <CarouselItem :text1="item.text1" :text2="item.text2" :text3="item.text3" :imgurl="item.imgurl" />
                 </el-carousel-item>
             </el-carousel>
         </div>
         <!-- 保函服务 -->
         <div class="serve">
             <div class="w_c">
-                <MenuTitle
-                    :title="'保函服务'"
-                    :tip="'一键申请、最快3分钟出函、全程在线办理'"
-                />
-                <div class="serve-box">
+                <MenuTitle :title="'保函服务'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
+                <div class="serve-box box">
                     <ul>
                         <li v-for="(item, index) in serveList" :key="index">
                             <div><i :class="item.icon"></i></div>
@@ -36,22 +25,11 @@
         <!-- 项目流程 -->
         <div class="process">
             <div class="w_c">
-                <MenuTitle
-                    :title="'项目流程'"
-                    :tip="'一键申请、最快3分钟出函、全程在线办理'"
-                />
-                <div class="step">
-                    <div
-                        class="step-item"
-                        v-for="(item, index) in stepInfo"
-                        :key="index"
-                    >
-                        <el-progress
-                            type="dashboard"
-                            :percentage="item.percentage"
-                            color="rgb(32, 160, 255)"
-                            :status="item.status ? item.status : null"
-                        ></el-progress>
+                <MenuTitle :title="'项目流程'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
+                <div class="step box">
+                    <div class="step-item" v-for="(item, index) in stepInfo" :key="index">
+                        <el-progress type="dashboard" :percentage="item.percentage" color="rgb(32, 160, 255)"
+                            :status="item.status ? item.status : null"></el-progress>
                         <div class="title">
                             <span>{{ item.step }}</span>
                         </div>
@@ -80,16 +58,9 @@
         <!-- 项目优势 -->
         <div class="advantage">
             <div class="w_c">
-                <MenuTitle
-                    :title="'项目优势'"
-                    :tip="'一键申请、最快3分钟出函、全程在线办理'"
-                />
-                <ul class="item-box">
-                    <li
-                        class="advantage-item"
-                        v-for="(item, index) in advantageList"
-                        :key="index"
-                    >
+                <MenuTitle :title="'项目优势'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
+                <ul class="item-box box">
+                    <li class="advantage-item" v-for="(item, index) in advantageList" :key="index">
                         <span><i>0</i>{{ index + 1 }}</span>
                         <h3>{{ item.text1 }}</h3>
                         <p>{{ item.text2 }}</p>
@@ -100,28 +71,17 @@
         <!-- 合作机构 -->
         <div class="partner">
             <div class="w_c">
-                <MenuTitle
-                    :title="'合作机构'"
-                    :tip="'一键申请、最快3分钟出函、全程在线办理'"
-                />
-                <div class="partner-box">
-                    <el-card
-                        shadow="hover"
-                        v-for="(item, index) in partnerList"
-                        :key="index"
-                    >
-                        <el-image
-                            :src="item.imgUrl"
-                            :fit="fit"
-                            v-if="item.imgUrl"
-                        ></el-image>
+                <MenuTitle :title="'合作机构'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
+                <div class="partner-box box">
+                    <el-card shadow="always" v-for="(item, index) in partnerList" :key="index">
+                        <el-image :src="item.imgUrl" :fit="fit" v-if="item.imgUrl"></el-image>
                         <div v-else>{{ item.name }}</div>
                     </el-card>
                 </div>
             </div>
         </div>
         <!-- footer -->
-        <Footer/>
+        <Footer />
     </div>
 </template>
 
@@ -258,33 +218,45 @@ export default {
 
 <style lang="less" scoped>
 .home {
+    .box {
+        margin: 1.5rem 0;
+    }
+
     .carousel {
         height: 10rem;
         background-color: rgb(28, 102, 222);
+
         .carousel-item {
             height: 10rem;
             text-align: center;
             background-color: pink;
         }
+
         /deep/.el-carousel__indicators {
             display: none;
         }
+
         /deep/.el-carousel__arrow {
             width: 0.75rem;
             height: 0.75rem;
             background-color: rgba(31, 45, 61, 0.3);
+
             i {
                 font-size: 30px;
             }
         }
     }
+
     .serve {
+
         // height: 10rem;
         .serve-box {
-            margin: 1.65rem 0;
+            // margin: 1.65rem 0;
+
             ul {
                 display: flex;
                 flex-wrap: wrap;
+
                 li {
                     width: 3.75rem;
                     height: 1.875rem;
@@ -295,9 +267,11 @@ export default {
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
+
                     div i {
                         font-size: 0.625rem;
                     }
+
                     span {
                         margin: 0.0625rem 0;
                     }
@@ -305,15 +279,18 @@ export default {
             }
         }
     }
+
     .process {
         .step {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 1.65rem 0;
+            // margin: 1.65rem 0;
+
             .step-item {
                 flex: 1;
                 text-align: center;
+
                 .title {
                     margin: 0.45rem 0;
                     font-size: 24px;
@@ -322,12 +299,14 @@ export default {
             }
         }
     }
+
     .advantage {
         .item-box {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            margin: 1.65rem 0;
+            // margin: 1.65rem 0;
+
             .advantage-item {
                 flex: 1;
                 padding: 0.3125rem;
@@ -335,18 +314,22 @@ export default {
                 font-size: 0.2rem;
                 color: rgb(82, 128, 255);
                 background: url('@/assets/home_img/border.png') no-repeat left top;
+
                 span {
                     font-size: 0.45rem;
                     font-style: italic;
+
                     i {
                         opacity: 0.5;
                     }
                 }
+
                 h3 {
                     margin-top: 0.25rem;
                     font-size: 0.375rem;
                     font-weight: 800;
                 }
+
                 p {
                     margin-top: 0.1rem;
                     color: #999;
@@ -354,11 +337,13 @@ export default {
             }
         }
     }
+
     .partner {
         .partner-box {
             display: flex;
-            margin: 1.65rem 0;
+            // margin: 1.65rem 0;
             min-width: 95px;
+
             .el-card {
                 margin-left: 0.5rem;
                 margin-bottom: 0.1875rem;
@@ -370,6 +355,10 @@ export default {
                 font-size: 0.225rem;
                 font-weight: 800;
                 cursor: pointer;
+            }
+
+            .el-card:hover {
+                transform: scale(1.1);
             }
         }
     }

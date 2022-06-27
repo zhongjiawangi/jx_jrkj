@@ -51,7 +51,7 @@
             <MenuTitle :title="'员工福利'" />
             <div class="photo_box">
                 <el-carousel :interval="3000" type="card" height="6rem">
-                    <el-carousel-item v-for="item in welfareInfo" :key="item">
+                    <el-carousel-item v-for="(item, index) in welfareInfo" :key="index">
                         <el-card>
                             <div class="photo">
                                 <img :src="item.imgurl" alt="">

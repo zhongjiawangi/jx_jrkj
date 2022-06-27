@@ -139,12 +139,12 @@ export default {
                         width: 0.75rem;
                         height: 0.75rem;
                         border-radius: 50%;
-                        border: 1px solid #fff;
+                        border: 0.0125rem solid #fff;
                         display:flex;
                         justify-content: center;
                         align-items: center;
                         img {
-                          width: 40px;
+                          width: .5rem;
                         }
                     }
                 }

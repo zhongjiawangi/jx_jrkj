@@ -4,7 +4,7 @@
           <h1 class="text1">{{ text1 }}</h1>
           <h3 class="text2">{{ text2 }}</h3>
           <p class="text3">{{ text3 }}</p>
-          <el-button round @click="asking" class="btn">立即咨询</el-button>
+          <el-button round @click="asking" >立即咨询</el-button>
       </div>
       <div class="right">
           <!-- <img src="@/assets/img1.png" alt="图片未加载"> -->
@@ -56,8 +56,6 @@ export default {
         }
         .el-button {
             margin-top: .25rem;
-            width: 1.875rem;
-            height: .625rem;
             font-size: .2rem;
             color: rgb(28, 102, 222);
             font-weight: 800;
