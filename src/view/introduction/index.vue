@@ -105,6 +105,9 @@ export default {
         }
     },
     components: { MenuTitle },
+    created() {
+      window.scroll(0,0)
+    }
 }
 </script>
 

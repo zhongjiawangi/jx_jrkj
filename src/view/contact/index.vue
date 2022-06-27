@@ -18,11 +18,11 @@
                         :key="index"
                     >
                         <el-tooltip
-                            content="Top Center 提示文字"
+                            :content="item.value"
                             placement="top"
                             effect="light"
                         >
-                            <div class="icon"><img :src="item" alt="" /></div>
+                            <div class="icon"><img :src="item.img" alt="" /></div>
                         </el-tooltip>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import QQ from '@/assets/contact_img/QQ.png'
+import qq from '@/assets/contact_img/QQ.png'
 import email from '@/assets/contact_img/email.png'
 import wechat from '@/assets/contact_img/wechat.png'
 import weibo from '@/assets/contact_img/weibo.png'
@@ -43,7 +43,29 @@ export default {
             timer: null,
             step: 10,
             index: 1,
-            contactInfo: [QQ, wechat, email, weibo],
+            // contactInfo: [QQ, wechat, email, weibo],
+            contactInfo: [
+              {
+                name: 'QQ',
+                img: qq,
+                value: '这是QQ'
+              },
+              {
+                name: '微信',
+                img: wechat,
+                value: '这是微信'
+              },
+              {
+                name: '邮箱',
+                img: email,
+                value: '这是邮箱'
+              },
+              {
+                name: '微博',
+                img: weibo,
+                value: '这是微博'
+              },
+            ],
             telephone: '0791-8853610 / 13407938888',
             wechat: '13407938888',
             address:
@@ -53,7 +75,7 @@ export default {
     methods: {
         bgScroll() {
             var { bg } = this.$refs
-            if (this.index < 400) {
+            if (this.index < 500) {
                 this.index++
             } else {
                 this.index = 0
@@ -87,7 +109,7 @@ export default {
         .bg {
             position: absolute;
             z-index: -1;
-            width: 250%;
+            width: 350%;
             height: 100%;
             background-image: url('@/assets/contact_bg.jpg');
             background-repeat: repeat-x;
