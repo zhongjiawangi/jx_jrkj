@@ -121,17 +121,13 @@
             </div>
         </div>
         <!-- footer -->
-        <Footer
-            :address="contact.address"
-            :telephone="contact.telephone"
-            :email="contact.email"
-        />
+        <Footer/>
     </div>
 </template>
 
 <script>
 import CarouselItem from '@/components/CarouselItem'
-import imgurl1 from '@/assets/img1.png'
+import imgurl1 from '@/assets/home_img/img1.png'
 import MenuTitle from '@/components/menuTitle.vue'
 import Footer from '@/components/footer.vue'
 
@@ -255,21 +251,6 @@ export default {
                     imgUrl: '',
                 },
             ],
-            contact: {
-                address: {
-                    icon: 'el-icon-location-outline',
-                    address:
-                        '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室',
-                },
-                telephone: {
-                    icon: 'el-icon-phone',
-                    telephone: '0791-8853610 / 13407938888',
-                },
-                email: {
-                    icon: 'el-icon-message',
-                    email: '这是邮箱',
-                },
-            },
         }
     },
 }
@@ -353,7 +334,7 @@ export default {
                 height: 2.75rem;
                 font-size: 0.2rem;
                 color: rgb(82, 128, 255);
-                background: url('@/assets/border.png') no-repeat left top;
+                background: url('@/assets/home_img/border.png') no-repeat left top;
                 span {
                     font-size: 0.45rem;
                     font-style: italic;

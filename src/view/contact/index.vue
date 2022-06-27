@@ -111,7 +111,7 @@ export default {
             z-index: -1;
             width: 350%;
             height: 100%;
-            background-image: url('@/assets/contact_bg.jpg');
+            background-image: url('@/assets/contact_img/contact_bg.jpg');
             background-repeat: repeat-x;
             transition: all 0.5s;
         }
