@@ -5,8 +5,7 @@
       <!-- 导航栏 -->
       <div class="container w_c">
         <div class="logo">
-          <img src="@/assets/logo.png" alt="" />
-          <span class="test">江若科技</span>
+          <img src="@/assets/log.png" alt="" />
         </div>
         <nav class="nav">
           <div v-for="(item, index) in menulist" :key="index" class="menu-item" @click="jump(item)">
@@ -149,7 +148,7 @@ export default {
         align-items: center;
 
         img {
-          width: 0.625rem;
+          width: 2.5rem;
         }
 
         span {
