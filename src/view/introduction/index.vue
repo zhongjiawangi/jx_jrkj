@@ -33,7 +33,7 @@
                         </div>
                         <div class="contant" v-for="(item, index) in cultureinfo.cultures" :key="index">
                             <div class="img">
-                                <el-image :src="item.img"></el-image>
+                                <img :src="item.img"/>
                             </div>
                             <div class="text">
                                 <p>{{ item.name }}</p>
@@ -105,19 +105,19 @@ export default {
                 cultures: [
                     {
                         img: position_img,
-                        name: '企业定位',
-                        explain: '做金融保函行业领军品牌。',
+                        name: '这里是名字',
+                        explain: '这里是解释',
                     },
                     {
                         img: mission_img,
-                        name: '企业使命',
+                        name: '这里是名字',
                         explain:
-                            '使数十万承包人卸下资金紧缺的包袱，保障发包人的合法权益。',
+                            '这里是解释',
                     },
                     {
                         img: value_img,
-                        name: '企业价值观',
-                        explain: '求精、创新、崇德、共赢 。',
+                        name: '这里是名字',
+                        explain: '这里是解释',
                     },
                 ],
             },
@@ -247,6 +247,9 @@ export default {
                 display: flex;
                 align-items: center;
                 margin-bottom: 0.25rem;
+                img {
+                    width:.9rem;
+                }
 
                 .text {
                     padding-left: 0.25rem;

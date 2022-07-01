@@ -20,7 +20,7 @@ export default {
     props:['imgurl', 'text1', 'text2', 'text3'],
     methods: {
       asking() {
-        console.log(1);
+        this.$store.commit('changeDialog');
       },
       fideIn() {
         setTimeout(() => {

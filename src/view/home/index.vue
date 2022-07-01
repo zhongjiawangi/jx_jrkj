@@ -1,5 +1,12 @@
 <template>
     <div class="home">
+        <div class="dialog">
+            <el-dialog :visible.sync="$store.state.dialogVisible" width="30%">
+                <div class="info">
+                    这里是咨询信息
+                </div>
+            </el-dialog>
+        </div>
         <!-- 轮播图 -->
         <div class="carousel">
             <el-carousel :interval="5000" height="10rem">
@@ -8,11 +15,11 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <!-- 保函服务 -->
-        <div class="serve">
+        <!-- 产品介绍 -->
+        <div class="production">
             <div class="w_c">
-                <MenuTitle :title="'保函服务'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
-                <div class="serve-box box">
+                <MenuTitle :title="'产品介绍'" :tip="'这里是tips'" />
+                <div class="production-box box">
                     <ul>
                         <li v-for="(item, index) in serveList" :key="index">
                             <div><i :class="item.icon"></i></div>
@@ -23,7 +30,7 @@
             </div>
         </div>
         <!-- 项目流程 -->
-        <div class="process">
+        <!-- <div class="process">
             <div class="w_c">
                 <MenuTitle :title="'项目流程'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
                 <div class="step box">
@@ -33,32 +40,14 @@
                         <div class="title">
                             <span>{{ item.step }}</span>
                         </div>
-                        <!--  <el-steps :active="2" align-center>
-                        <el-step
-                            title="步骤1"
-                            description="这是一段很长很长很长的描述性文字"
-                        ></el-step>
-                        <el-step
-                            title="步骤2"
-                            description="这是一段很长很长很长的描述性文字"
-                        ></el-step>
-                        <el-step
-                            title="步骤3"
-                            description="这是一段很长很长很长的描述性文字"
-                        ></el-step>
-                        <el-step
-                            title="步骤4"
-                            description="这是一段很长很长很长的描述性文字"
-                        ></el-step>
-                    </el-steps> -->
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- 项目优势 -->
-        <div class="advantage">
+        <!-- <div class="advantage">
             <div class="w_c">
-                <MenuTitle :title="'项目优势'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
+                <MenuTitle :title="'项目优势'" :tip="'这里是tips'" />
                 <ul class="item-box box">
                     <li class="advantage-item" v-for="(item, index) in advantageList" :key="index">
                         <span><i>0</i>{{ index + 1 }}</span>
@@ -67,15 +56,15 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <!-- 合作机构 -->
         <div class="partner">
             <div class="w_c">
-                <MenuTitle :title="'合作机构'" :tip="'一键申请、最快3分钟出函、全程在线办理'" />
+                <MenuTitle :title="'合作机构'" :tip="'这里是tips'" />
                 <div class="partner-box box">
                     <el-card shadow="always" v-for="(item, index) in partnerList" :key="index">
                         <el-image :src="item.imgUrl" :fit="fit" v-if="item.imgUrl"></el-image>
-                        <div v-else>{{ item.name }}</div>
+                        <div v-else class="line">{{ item.name }}</div>
                     </el-card>
                 </div>
             </div>
@@ -100,6 +89,7 @@ export default {
     },
     data() {
         return {
+            dialogVisible: false,
             carousel: [
                 {
                     imgurl: imgurl1,
@@ -128,35 +118,35 @@ export default {
             ],
             serveList: [
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
                 {
-                    title: '电子投标保函',
+                    title: '这里是产品名称',
                     icon: 'el-icon-s-opportunity',
                 },
             ],
@@ -218,6 +208,10 @@ export default {
 
 <style lang="less" scoped>
 .home {
+    .dialog {
+        text-align: center;
+    }
+
     .box {
         margin: 1.5rem 0;
     }
@@ -242,15 +236,15 @@ export default {
             background-color: rgba(31, 45, 61, 0.3);
 
             i {
-                font-size: 30px;
+                font-size: .375rem;
             }
         }
     }
 
-    .serve {
+    .production {
 
         // height: 10rem;
-        .serve-box {
+        .production-box {
             // margin: 1.65rem 0;
 
             ul {
@@ -260,13 +254,16 @@ export default {
                 li {
                     width: 3.75rem;
                     height: 1.875rem;
-                    border: 1px solid #dedede;
+                    border: .0125rem solid #dedede;
                     margin-left: -0.0125rem;
                     margin-bottom: -0.0125rem;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
+                    cursor: pointer;
+                    transition: all 0.5s;
+                    background-color: #fff;
 
                     div i {
                         font-size: 0.625rem;
@@ -275,6 +272,9 @@ export default {
                     span {
                         margin: 0.0625rem 0;
                     }
+                }
+                li:hover {
+                    transform: scale(1.1);
                 }
             }
         }
@@ -293,8 +293,17 @@ export default {
 
                 .title {
                     margin: 0.45rem 0;
-                    font-size: 24px;
+                    font-size: .3rem;
                     color: rgb(32, 160, 255);
+                }
+
+                /deep/.el-progress-circle {
+                    width: 1.575rem !important;
+                    height: 1.575rem !important;
+                }
+
+                /deep/.el-progress__text {
+                    font-size: .2rem !important;
                 }
             }
         }
@@ -314,6 +323,7 @@ export default {
                 font-size: 0.2rem;
                 color: rgb(82, 128, 255);
                 background: url('@/assets/home_img/border.png') no-repeat left top;
+                background-size: contain;
 
                 span {
                     font-size: 0.45rem;
@@ -342,7 +352,7 @@ export default {
         .partner-box {
             display: flex;
             // margin: 1.65rem 0;
-            min-width: 95px;
+            min-width: 1.1875rem;
 
             .el-card {
                 margin-left: 0.5rem;
@@ -359,6 +369,12 @@ export default {
 
             .el-card:hover {
                 transform: scale(1.1);
+            }
+
+            .line {
+                white-space: nowrap; // 强制一行显示
+                overflow: hidden; // 超出隐藏
+                text-overflow: ellipsis; // 省略号
             }
         }
     }
