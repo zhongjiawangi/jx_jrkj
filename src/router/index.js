@@ -8,7 +8,6 @@ const Home = () => import("@/view/home/index.vue");
 const About = () => import("@/view/about/index.vue");
 // const Introduction = () => import("@/view/introduction/index.vue");
 const Contact = () => import("@/view/contact/index.vue");
-const Query = () => import("@/view/query/index.vue");
 const Mobile = () => import("@/view/mobile/index.vue");
 
 const routes = [
@@ -31,11 +30,6 @@ const routes = [
         path: "/introduction",
         name: "公司简介",
         component: About,
-      },
-      {
-        path: "/query",
-        name: "保函查询",
-        component: Query,
       },
     ],
   },

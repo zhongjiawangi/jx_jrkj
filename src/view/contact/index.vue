@@ -128,6 +128,7 @@ export default {
 
 <style lang="less" scoped>
 .contactUs {
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(64, 158, 255, .5), rgba(245, 245, 245, 1));
 
     // overflow: hidden;
     .box {
@@ -136,15 +137,15 @@ export default {
         height: calc(100vh - 1.25rem);
         overflow: hidden;
 
-        .bg {
-            position: absolute;
-            z-index: -1;
-            width: 350%;
-            height: 100%;
-            background-image: url('@/assets/contact_img/contact_bg.jpg');
-            background-repeat: repeat-x;
-            transition: all 0.5s;
-        }
+        // .bg {
+        //     position: absolute;
+        //     z-index: -1;
+        //     width: 350%;
+        //     height: 100%;
+        //     background-image: url('@/assets/contact_img/contact_bg.jpg');
+        //     background-repeat: repeat-x;
+        //     transition: all 0.5s;
+        // }
 
         .contant {
             height: 100%;
@@ -152,7 +153,7 @@ export default {
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            color: #fff;
+            color: #333;
             font-size: 0.2rem;
 
             h1 {
