@@ -3,17 +3,19 @@
     <div class="dialog">
       <el-dialog :visible.sync="$store.state.dialogVisible" width="30%">
         <div class="info">
-          <img :src="url" alt="">
+          <p>微信扫码咨询</p>
+          <img :src="url" alt="" style="width:100%">
         </div>
       </el-dialog>
     </div>
     <!-- 轮播图 -->
     <div class="carousel">
-      <el-carousel :interval="5000" height="10rem">
+      <!-- <el-carousel :interval="5000" height="10rem">
         <el-carousel-item v-for="(item, index) in carousel" :key="index">
           <CarouselItem :text1="item.text1" :text2="item.text2" :text3="item.text3" :imgurl="item.imgurl" />
         </el-carousel-item>
-      </el-carousel>
+      </el-carousel> -->
+      <CarouselItem :text1="carousel.text1" :text2="carousel.text2" :imgurl="carousel.imgurl" />F
     </div>
     <!-- 产品介绍 -->
     <div class="production">
@@ -97,26 +99,12 @@ export default {
     return {
       dialogVisible: false,
       url: contactCode,
-      carousel: [
-        {
-          imgurl: imgurl1,
-          text1: '江若科技是专业金融科技公司',
-          text2: '为金融机构提供电子投标保函系统',
-          text3: '金融担保审批系统',
-        },
-        {
-          imgurl: imgurl1,
-          text1: '江若科技是专业金融科技公司',
-          text2: '为金融机构提供电子投标保函系统',
-          text3: '金融担保审批系统',
-        },
-        {
-          imgurl: imgurl1,
-          text1: '江若科技是专业金融科技公司',
-          text2: '为金融机构提供电子投标保函系统',
-          text3: '金融担保审批系统',
-        },
-      ],
+      carousel:
+      {
+        imgurl: imgurl1,
+        text1: '江若科技是专业金融科技公司',
+        text2: '为金融机构提供电子投标保函系统、金融担保审批系统',
+      },
       serveList: [
         {
           title: '电子投标保函系统',

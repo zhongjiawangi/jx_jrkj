@@ -44,6 +44,7 @@
                 </div>
             </div> -->
         </div>
+        <Footer/>
     </div>
 </template>
 
@@ -52,77 +53,79 @@ import qq from '@/assets/contact_img/QQ.png'
 import email from '@/assets/contact_img/email.png'
 import wechat from '@/assets/contact_img/wechat.png'
 import weibo from '@/assets/contact_img/weibo.png'
+import Footer from '@/components/footer.vue'
 export default {
-    name: 'contactUs',
+    name: "contactUs",
     data() {
         return {
             timer: null,
             step: 10,
             index: 1,
             duty: [
-                '负责公司技术部人员管理，分配任务，制定计划；',
-                '负责公司信息化软件的管理（主要技术已经给第三方公司做，加入项目组接手项目）；',
-                '负责公司信息化软件的开发，根据需要迭代升级系统。',
-                '根据公司业务发展，开发其他系统、网站等。',
+                "负责公司技术部人员管理，分配任务，制定计划；",
+                "负责公司信息化软件的管理（主要技术已经给第三方公司做，加入项目组接手项目）；",
+                "负责公司信息化软件的开发，根据需要迭代升级系统。",
+                "根据公司业务发展，开发其他系统、网站等。",
             ],
             Require: [
-                '熟悉Java开发语言，掌握Java基础、IO,多线程、集合、JVM等，熟悉面向对象程序设计；',
-                '熟练使用Springboot，Mybatis,Dubbo,Springcloud等主流框架；',
-                '熟悉Redis等常用的中间件；熟悉Mysql，Linux等；',
-                '有一定的项目管理经验。',
+                "熟悉Java开发语言，掌握Java基础、IO,多线程、集合、JVM等，熟悉面向对象程序设计；",
+                "熟练使用Springboot，Mybatis,Dubbo,Springcloud等主流框架；",
+                "熟悉Redis等常用的中间件；熟悉Mysql，Linux等；",
+                "有一定的项目管理经验。",
             ],
             // contactInfo: [QQ, wechat, email, weibo],
             contactInfo: [
                 {
-                    name: 'QQ',
+                    name: "QQ",
                     img: qq,
-                    value: '这是QQ'
+                    value: "这是QQ"
                 },
                 {
-                    name: '微信',
+                    name: "微信",
                     img: wechat,
-                    value: '这是微信'
+                    value: "这是微信"
                 },
                 {
-                    name: '邮箱',
+                    name: "邮箱",
                     img: email,
-                    value: '这是邮箱'
+                    value: "这是邮箱"
                 },
                 {
-                    name: '微博',
+                    name: "微博",
                     img: weibo,
-                    value: '这是微博'
+                    value: "这是微博"
                 },
             ],
-            telephone: '0791-8853610 / 13407938888',
-            wechat: '13407938888',
-            address:
-                '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室',
-        }
+            telephone: "0791-8853610 / 13407938888",
+            wechat: "13407938888",
+            address: "江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室",
+        };
     },
     methods: {
         bgScroll() {
-            var { bg } = this.$refs
+            var { bg } = this.$refs;
             if (this.index < 500) {
-                this.index++
-            } else {
-                this.index = 0
+                this.index++;
             }
-            const left = (-this.index * this.step) / 80 + 'rem'
-            bg.style.left = left
+            else {
+                this.index = 0;
+            }
+            const left = (-this.index * this.step) / 80 + "rem";
+            bg.style.left = left;
         },
         stop() {
-            clearInterval(this.timer)
+            clearInterval(this.timer);
         },
     },
     mounted() {
         this.timer = setInterval(() => {
-            this.bgScroll()
-        }, 200)
+            this.bgScroll();
+        }, 200);
     },
     beforeDestroy() {
-        this.stop()
+        this.stop();
     },
+    components: { Footer }
 }
 </script>
 

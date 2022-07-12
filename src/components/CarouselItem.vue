@@ -1,9 +1,9 @@
 <template>
-  <div class="CarouselItem">
+  <div class="CarouselItem w_c">
       <div class="left">
           <h1 class="text1">{{ text1 }}</h1>
           <h3 class="text2">{{ text2 }}</h3>
-          <p class="text3">{{ text3 }}</p>
+          <!-- <p class="text3">{{ text3 }}</p> -->
           <el-button round @click="asking" >立即咨询</el-button>
       </div>
       <div class="right">
@@ -17,7 +17,7 @@
 import $ from 'jquery'
 export default {
     name: 'CarouselItem',
-    props:['imgurl', 'text1', 'text2', 'text3'],
+    props:['imgurl', 'text1', 'text2'],
     methods: {
       asking() {
         this.$store.commit('changeDialog');
