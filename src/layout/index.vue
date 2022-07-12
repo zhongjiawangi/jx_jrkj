@@ -9,7 +9,8 @@
                     <span>江若科技</span>
                 </div>
                 <nav class="nav">
-                    <div v-for="(item, index) in menulist" :key="index" class="menu-item" @click="jump(item)" @mouseenter="enter(item)" @mouseleave="leave(item)">
+                    <div v-for="(item, index) in menulist" :key="index" class="menu-item" @click="jump(item)"
+                        @mouseenter="enter(item)" @mouseleave="leave(item)">
                         <p>{{ item.name }}</p>
                         <div class="children" style="display: none">
                             <div class="item" v-for="(item, index) in item.children" :key="index"
@@ -22,7 +23,10 @@
             </div>
         </div>
         <router-view />
-        <div class="filing-information">这里是备案信息</div>
+        <div class="filing-information">
+            <span>Copyright ©2022 江西江若科技有限公司 版权所有</span>
+            <a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2022005510号-1</a>
+        </div>
     </div>
 </template>
 <script>
@@ -62,7 +66,7 @@ export default {
                     url: '/introduction',
                 },
                 {
-                    name: '联系我们',
+                    name: '人力资源',
                     url: '/contact',
                 },
             ],
@@ -116,7 +120,7 @@ export default {
                 // var step = Math.ceil((target - obj.offsetLeft) / 10);
                 var step = (target - window.pageYOffset) / 10
                 step = step > 0 ? Math.ceil(step) : Math.floor(step)
-                if ((scrollTop + windowHeight >= documentHeight) || window.pageYOffset == target) {
+                if (((scrollTop + windowHeight >= documentHeight) && target > window.pageYOffset) || window.pageYOffset == target) {
                     // 停止动画 本质是停止定时器
                     clearInterval(obj.timer)
                     // 回调函数写到定时器结束里面
@@ -136,12 +140,12 @@ export default {
         },
         enter(item) {
             if (item.children) {
-                $('.children').fadeIn(1000)
+                $('.children').stop().fadeIn(500)
             }
         },
         leave(item) {
             if (item.children) {
-                $('.children').fadeOut(1000)
+                $('.children').stop().fadeOut(500)
             }
         }
     },
@@ -154,6 +158,8 @@ export default {
 .layout {
     overflow-y: hidden;
     padding-top: 1.25rem;
+    // background-image: linear-gradient(rgba(28, 102, 222, .5), rgba(245, 245, 245, 1));
+
 
     .top {
         position: fixed;
@@ -174,12 +180,14 @@ export default {
                 align-items: center;
 
                 img {
-                    width: .8rem;
+                    width: .65rem;
                 }
 
                 span {
-                    font-size: 0.3rem;
-                    color: #fff;
+                    font-size: 0.35rem;
+                    color: #000;
+                    font-weight: bold;
+                    font-family: '微软雅黑';
                 }
             }
 
@@ -203,9 +211,11 @@ export default {
                     .item {
                         background-color: rgb(28, 102, 222);
                     }
+
                     .item:hover {
                         color: #999;
                     }
+
                     p:hover {
                         color: #999;
                     }
@@ -224,7 +234,25 @@ export default {
         text-align: center;
         line-height: 0.375rem;
         color: #fff;
-        opacity: 0.5;
+        opacity: 0.7;
+
+        a {
+            color: #fff;
+            margin-left: .25rem;
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+            opacity: 0.7;
+        }
     }
+
+    // .filing-information:hover {
+    //     cursor: pointer;
+    //     color: red;
+    //     text-decoration: underline;
+    //     opacity: 0.7;
+    // }
 }
 </style>

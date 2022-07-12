@@ -18,11 +18,11 @@
         <!-- 产品介绍 -->
         <div class="production">
             <div class="w_c">
-                <MenuTitle :title="'产品介绍'" :tip="'这里是tips'" />
+                <MenuTitle :title="'产品介绍'" />
                 <div class="production-box box">
                     <ul>
                         <li v-for="(item, index) in serveList" :key="index">
-                            <div><i :class="item.icon"></i></div>
+                            <div><img :src="item.icon" alt=""></div>
                             <span>{{ item.title }}</span>
                         </li>
                     </ul>
@@ -79,6 +79,8 @@ import CarouselItem from '@/components/CarouselItem'
 import imgurl1 from '@/assets/home_img/img1.png'
 import MenuTitle from '@/components/menuTitle.vue'
 import Footer from '@/components/footer.vue'
+import baohanImg from '@/assets/home_img/baohan.png'
+import danbaoImg from '@/assets/home_img/danbao.png'
 
 export default {
     name: 'homePage',
@@ -93,61 +95,31 @@ export default {
             carousel: [
                 {
                     imgurl: imgurl1,
-                    text1: '这是第一段内容',
-                    text2: '这是第二段内容',
-                    text3: '这是第三段内容',
+                    text1: '江若科技是专业金融科技公司',
+                    text2: '为金融机构提供电子投标保函系统',
+                    text3: '金融担保审批系统',
                 },
                 {
                     imgurl: imgurl1,
-                    text1: '这是第一段内容',
-                    text2: '这是第二段内容',
-                    text3: '这是第三段内容',
+                    text1: '江若科技是专业金融科技公司',
+                    text2: '为金融机构提供电子投标保函系统',
+                    text3: '金融担保审批系统',
                 },
                 {
                     imgurl: imgurl1,
-                    text1: '这是第一段内容',
-                    text2: '这是第二段内容',
-                    text3: '这是第三段内容',
-                },
-                {
-                    imgurl: imgurl1,
-                    text1: '这是第一段内容',
-                    text2: '这是第二段内容',
-                    text3: '这是第三段内容',
+                    text1: '江若科技是专业金融科技公司',
+                    text2: '为金融机构提供电子投标保函系统',
+                    text3: '金融担保审批系统',
                 },
             ],
             serveList: [
                 {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
+                    title: '电子投标保函系统',
+                    icon: baohanImg,
                 },
                 {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
-                },
-                {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
-                },
-                {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
-                },
-                {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
-                },
-                {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
-                },
-                {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
-                },
-                {
-                    title: '这里是产品名称',
-                    icon: 'el-icon-s-opportunity',
+                    title: '金融担保审批系统',
+                    icon: danbaoImg,
                 },
             ],
             stepInfo: [
@@ -200,6 +172,10 @@ export default {
                     name: '九江市工业融资担保有限公司',
                     imgUrl: '',
                 },
+                {
+                    name: '萍乡市汇源融资担保有限公司',
+                    imgUrl: '',
+                },
             ],
         }
     },
@@ -208,6 +184,8 @@ export default {
 
 <style lang="less" scoped>
 .home {
+    background-image: linear-gradient(to bottom right, rgba(245, 245, 245, 1), rgba(64, 158, 255,.5), rgba(245, 245, 245, 1));
+
     .dialog {
         text-align: center;
     }
@@ -250,32 +228,32 @@ export default {
             ul {
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
 
                 li {
-                    width: 3.75rem;
-                    height: 1.875rem;
-                    border: .0125rem solid #dedede;
-                    margin-left: -0.0125rem;
-                    margin-bottom: -0.0125rem;
+                    width: 30%;
+                    height: 2.5rem;
+                    // border: .0125rem solid #dedede;
+                    // margin-left: -0.0125rem;
+                    // margin-bottom: -0.0125rem;
+                    margin: .0625rem;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    cursor: pointer;
-                    transition: all 0.5s;
                     background-color: #fff;
+                    border-radius: .0625rem;
 
-                    div i {
-                        font-size: 0.625rem;
+                    div img {
+                        width: .8rem;
                     }
 
                     span {
-                        margin: 0.0625rem 0;
+                        margin: 0.1rem 0;
+                        font-size: .25rem;
                     }
                 }
-                li:hover {
-                    transform: scale(1.1);
-                }
+
             }
         }
     }

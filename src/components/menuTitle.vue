@@ -2,7 +2,6 @@
     <div class="menuTitle">
         <h2>{{ title }}</h2>
         <el-divider><i class="el-icon-help"></i></el-divider>
-        <p>{{ tip }}</p>
     </div>
 </template>
 
@@ -25,7 +24,11 @@ export default {
     }
     /deep/.el-divider__text {
         font-size: 0.45rem;
-        background-color: rgb(250,250,250);
+        background-color: transparent;
+        .el-icon-help {
+            background-color: #fff;
+            border-radius: 50%;
+        }
     }
     p {
         margin: 0.45rem 0;

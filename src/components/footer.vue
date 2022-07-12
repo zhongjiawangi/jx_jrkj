@@ -16,12 +16,10 @@
                 </div>
             </div>
             <div class="right">
-                <el-image>
-                    <div slot="error" class="image-slot">
-                        <i class="el-icon-picture-outline"></i>
-                        <p style="color: #fff">这里是二维码</p>
-                    </div>
-                </el-image>
+                <!-- <el-image :src="'@/assets/QRCode.jpg'">
+                </el-image> -->
+                <img src="@/assets/QRCode.jpg" alt="">
+                <p>扫描微信公众号关注我们</p>
             </div>
         </div>
     </footer>
@@ -32,19 +30,19 @@ export default {
     name: 'footerComponent',
     data() {
         return {
-                address: {
-                    icon: 'el-icon-location-outline',
-                    address:
-                        '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室',
-                },
-                telephone: {
-                    icon: 'el-icon-phone',
-                    telephone: '0791-8853610 / 13407938888',
-                },
-                email: {
-                    icon: 'el-icon-message',
-                    email: '这是邮箱',
-                },
+            address: {
+                icon: 'el-icon-location-outline',
+                address:
+                    '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室',
+            },
+            telephone: {
+                icon: 'el-icon-phone',
+                telephone: '0791-8853610 / 13407938888',
+            },
+            email: {
+                icon: 'el-icon-message',
+                email: '23778989@qq.com',
+            },
         }
     }
 }
@@ -71,17 +69,20 @@ export default {
                 margin-bottom: 0.25rem;
                 font-size: .175rem;
             }
+
+            i {
+                padding-right: .0625rem;
+            }
         }
 
         .right {
-            .el-image {
-                width: 2.5rem;
-                height: 2.5rem;
-                font-size: 1.5rem;
-
-                p {
-                    font-size: 18px;
-                }
+            img {
+                width: 2.6875rem;
+            }
+            p {
+                text-align: center;
+                margin-top: .125rem;
+                font-size: .2rem;
             }
         }
     }

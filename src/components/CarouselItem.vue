@@ -44,15 +44,15 @@ export default {
         color: #fff;
         h1 {
             margin-bottom: .375rem;
-            font-size: 1rem;
+            font-size: .75rem;
         }
         h3 {
             margin-bottom: .25rem;
-            font-size: .45rem;
+            font-size: .4rem;
         }
         p {
             margin-bottom: .25rem;
-            font-size: .25rem;
+            font-size: .3rem;
         }
         .el-button {
             margin-top: .25rem;
