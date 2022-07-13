@@ -101,6 +101,7 @@ export default {
     background-color: #999;
     text-align: center;
     line-height: 0.375rem;
+    font-size: .15rem;
     color: #fff;
     // opacity: 0.7;
 

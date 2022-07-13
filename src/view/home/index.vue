@@ -86,6 +86,7 @@ import danbaoImg from '@/assets/home_img/danbao.png'
 import fcjy from '@/assets/home_img/fcjy.jpg'
 import jjrd from '@/assets/home_img/jjrd.jpg'
 import jjgd from '@/assets/home_img/jjgd.jpg'
+import pxhy from '@/assets/home_img/pxhy.jpg'
 import contactCode from '@/assets/home_img/contactCode.jpg'
 
 export default {
@@ -171,7 +172,7 @@ export default {
         },
         {
           name: '萍乡市汇源融资担保有限公司',
-          imgUrl: '',
+          imgUrl: pxhy,
         }
       ],
     }
