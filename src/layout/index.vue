@@ -12,11 +12,13 @@
           <div v-for="(item, index) in menulist" :key="index" class="menu-item" @click="jump(item)"
             @mouseenter="enter(item)" @mouseleave="leave(item)">
             <p>{{ item.name }}</p>
-            <div class="children" style="display: none">
-              <div class="item" v-for="(item, index) in item.children" :key="index" @click="query(item.url)">
-                {{ item.name }}
+            <el-collapse-transition v-if="item.children">
+              <div v-show="show" class="children">
+                <div class="item" v-for="(item, index) in item.children" :key="index" @click="query(item.url)">
+                  {{ item.name }}
+                </div>
               </div>
-            </div>
+            </el-collapse-transition>
           </div>
         </nav>
       </div>
@@ -25,11 +27,11 @@
   </div>
 </template>
 <script>
-import $ from 'jquery'
 export default {
   name: 'layOut',
   data() {
     return {
+      show: false,
       menulist: [
         {
           name: '首页',
@@ -117,12 +119,12 @@ export default {
     },
     enter(item) {
       if (item.children) {
-        $('.children').stop().fadeIn(500)
+        this.show = true
       }
     },
     leave(item) {
       if (item.children) {
-        $('.children').stop().fadeOut(500)
+        this.show = false
       }
     }
   },
@@ -143,7 +145,7 @@ export default {
     width: 100%;
     z-index: 1000;
     background-color: rgb(28, 102, 222);
-    box-shadow: 0px .025rem .15rem rgba(0,0,0,.1);
+    box-shadow: 0px .025rem .15rem rgba(0, 0, 0, .1);
 
     .container {
       display: flex;
