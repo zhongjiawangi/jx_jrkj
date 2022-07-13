@@ -1,7 +1,7 @@
 <template>
     <div class="contactUs">
         <div class="box">
-            <div class="bg" ref="bg"></div>
+            <!-- <div class="bg" ref="bg"></div> -->
             <div class="contant w_c">
                 <h1>开发负责人（南昌）</h1>
                 <p>开发负责人（南昌）| 1名 | 8k-15k（14薪）</p>
@@ -49,10 +49,10 @@
 </template>
 
 <script>
-import qq from '@/assets/contact_img/QQ.png'
-import email from '@/assets/contact_img/email.png'
-import wechat from '@/assets/contact_img/wechat.png'
-import weibo from '@/assets/contact_img/weibo.png'
+// import qq from '@/assets/contact_img/QQ.png'
+// import email from '@/assets/contact_img/email.png'
+// import wechat from '@/assets/contact_img/wechat.png'
+// import weibo from '@/assets/contact_img/weibo.png'
 import Footer from '@/components/footer.vue'
 export default {
     name: "contactUs",
@@ -73,58 +73,57 @@ export default {
                 "熟悉Redis等常用的中间件；熟悉Mysql，Linux等；",
                 "有一定的项目管理经验。",
             ],
-            // contactInfo: [QQ, wechat, email, weibo],
-            contactInfo: [
-                {
-                    name: "QQ",
-                    img: qq,
-                    value: "这是QQ"
-                },
-                {
-                    name: "微信",
-                    img: wechat,
-                    value: "这是微信"
-                },
-                {
-                    name: "邮箱",
-                    img: email,
-                    value: "这是邮箱"
-                },
-                {
-                    name: "微博",
-                    img: weibo,
-                    value: "这是微博"
-                },
-            ],
+            // contactInfo: [
+            //     {
+            //         name: "QQ",
+            //         img: qq,
+            //         value: "这是QQ"
+            //     },
+            //     {
+            //         name: "微信",
+            //         img: wechat,
+            //         value: "这是微信"
+            //     },
+            //     {
+            //         name: "邮箱",
+            //         img: email,
+            //         value: "这是邮箱"
+            //     },
+            //     {
+            //         name: "微博",
+            //         img: weibo,
+            //         value: "这是微博"
+            //     },
+            // ],
             telephone: "0791-8853610 / 13407938888",
             wechat: "13407938888",
             address: "江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室",
         };
     },
-    methods: {
-        bgScroll() {
-            var { bg } = this.$refs;
-            if (this.index < 500) {
-                this.index++;
-            }
-            else {
-                this.index = 0;
-            }
-            const left = (-this.index * this.step) / 80 + "rem";
-            bg.style.left = left;
-        },
-        stop() {
-            clearInterval(this.timer);
-        },
-    },
-    mounted() {
-        this.timer = setInterval(() => {
-            this.bgScroll();
-        }, 200);
-    },
-    beforeDestroy() {
-        this.stop();
-    },
+    // methods: {
+    //     bgScroll() {
+    //         var { bg } = this.$refs;
+    //         if (this.index < 500) {
+    //             this.index++;
+    //         }
+    //         else {
+    //             this.index = 0;
+    //         }
+    //         const left = (-this.index * this.step) / 80 + "rem";
+    //         bg.style.left = left;
+    //     },
+    //     stop() {
+    //         clearInterval(this.timer);
+    //     },
+    // },
+    // mounted() {
+    //     this.timer = setInterval(() => {
+    //         this.bgScroll();
+    //     }, 200);
+    // },
+    // beforeDestroy() {
+    //     this.stop();
+    // },
     components: { Footer }
 }
 </script>

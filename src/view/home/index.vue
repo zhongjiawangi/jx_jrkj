@@ -15,7 +15,7 @@
           <CarouselItem :text1="item.text1" :text2="item.text2" :text3="item.text3" :imgurl="item.imgurl" />
         </el-carousel-item>
       </el-carousel> -->
-      <CarouselItem :text1="carousel.text1" :text2="carousel.text2" :imgurl="carousel.imgurl" />F
+      <CarouselItem :text1="carousel.text1" :text2="carousel.text2" :imgurl="carousel.imgurl" />
     </div>
     <!-- 产品介绍 -->
     <div class="production">
