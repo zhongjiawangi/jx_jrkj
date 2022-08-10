@@ -1,15 +1,14 @@
 <template>
-  <div class="mobile">
-      <router-view/>
+  <div class="query"> 
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-    name: 'mobilePage'
+  name: 'MyQuery',
 }
 </script>
 
 <style lang="less" scoped>
-
 </style>

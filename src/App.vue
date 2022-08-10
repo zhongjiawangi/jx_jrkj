@@ -12,13 +12,13 @@ export default {
       );
     }
   },
-  // mounted() {
-  //   if (this.fIsMobile()) {
-  //     this.$router.push({ path: '/mobile' })
-  //     return;
-  //   }
-  //   this.$router.push({ path: '/' })
-  // }
+  mounted() {
+    if (this.fIsMobile()) {
+      this.$router.push({ path: '/mobile' })
+      return;
+    }
+    this.$router.push({ path: '/' })
+  }
 }
 </script>
 <style lang="less" scoped>

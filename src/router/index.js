@@ -9,6 +9,9 @@ const About = () => import("@/view/about/index.vue");
 // const Introduction = () => import("@/view/introduction/index.vue");
 const Contact = () => import("@/view/contact/index.vue");
 const Mobile = () => import("@/view/mobile/index.vue");
+const Query = () => import("@/view/mobile/view/query");
+const Info = () => import("@/view/mobile/view/query/info.vue");
+const MainQuery = () => import("@/view/mobile/view/query/query.vue");
 
 const routes = [
   {
@@ -35,8 +38,25 @@ const routes = [
   },
   {
     path: "/mobile",
-    name: "",
+    name: "手机端",
     component: Mobile,
+    redirect: "/mobile/query",
+    children: [
+      {
+        path: "/mobile/query",
+        component: Query,
+        children: [
+          {
+            path: "/",
+            component: MainQuery,
+          },
+          {
+            path: "/mobile/query/info",
+            component: Info,
+          },
+        ],
+      },
+    ],
   },
 ];
 
