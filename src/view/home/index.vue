@@ -83,17 +83,11 @@ import MenuTitle from '@/components/menuTitle.vue'
 import Footer from '@/components/footer.vue'
 import baohanImg from '@/assets/home_img/baohan.png'
 import danbaoImg from '@/assets/home_img/danbao.png'
-<<<<<<< HEAD
-import fcjy from '@/assets/home_img/fcjy.jpg'
-import jjrd from '@/assets/home_img/jjrd.jpg'
-import jjgd from '@/assets/home_img/jjgd.jpg'
-import pxhy from '@/assets/home_img/pxhy.jpg'
-=======
 import fcjy from '@/assets/home_img/partner/fcjy.jpg'
 import jjrd from '@/assets/home_img/partner/jjrd.jpg'
 import jjgd from '@/assets/home_img/partner/jjgd.jpg'
+import pxhy from '@/assets/home_img/partner/pxhy.jpg'
 import jjxyrd from '@/assets/home_img/partner/jjxyrd.jpg'
->>>>>>> mobile_query
 import contactCode from '@/assets/home_img/contactCode.jpg'
 
 export default {
@@ -179,15 +173,11 @@ export default {
         },
         {
           name: '萍乡市汇源融资担保有限公司',
-<<<<<<< HEAD
           imgUrl: pxhy,
-=======
-          imgUrl: '',
         },
         {
           name: '九江市浔阳区融资担保有限责任公司',
           imgUrl: jjxyrd
->>>>>>> mobile_query
         }
       ],
     }
