@@ -32,15 +32,20 @@ export default {
   color: #fff;
 
   .top {
+    * {
+      margin: 15px 0;
+    }
+
     h1 {
       color: #ce8a3c;
       font-size: 40px;
     }
+
     h3 {
-      margin: 10px 0;
-      font-size:20px;
+      font-size: 20px;
     }
   }
+
   p {
     font-size: 14px;
   }

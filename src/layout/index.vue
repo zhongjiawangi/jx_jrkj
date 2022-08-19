@@ -129,10 +129,10 @@ export default {
     }
   },
   // 进入这个页面之前
-  beforeRouteEnter(to, from, next) {
-    console.log('oiashfal');
-    next()
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   console.log('oiashfal');
+  //   next()
+  // },
 }
 </script>
 <style lang="less" scoped>

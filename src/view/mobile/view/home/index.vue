@@ -1,46 +1,113 @@
 <template>
   <div class="home-mobile">
-
+    <!-- 加入我们 -->
+    <div class="join-us" @click="showJoin = true" v-show="!showJoin">
+      <img src="@/assets/icon_join.png" alt="">
+    </div>
+    <van-overlay :show="showJoin" @click="showJoin = false">
+      <div class="personnel-management">
+        <h3 class="title">{{ personnelManagement.title }}</h3>
+        <p class="tip">{{ personnelManagement.tip }}</p>
+        <van-cell :title="personnelManagementDic.duty">
+          <template #label>
+            <p v-for="(item, index) in personnelManagement.duty" :key="index">
+              {{ index + 1 + '.' + item }}
+            </p>
+          </template>
+        </van-cell>
+        <van-cell :title="personnelManagementDic.Require">
+          <template #label>
+            <p v-for="(item, index) in personnelManagement.Require" :key="index">
+              {{ index + 1 + '.' + item }}
+            </p>
+          </template>
+        </van-cell>
+        <van-cell :title="personnelManagementDic.address" :label="personnelManagement.address" />
+        <van-cell :title="personnelManagementDic.connect" :label="personnelManagement.connect" />
+      </div>
+    </van-overlay>
+    <!-- 顶部 -->
     <div class="top">
       <div class="logo">
         <img src="@/assets/logo.png" alt="" />
         <span>江若科技</span>
       </div>
-      <div class="query">
+      <div class="query" @click="showQuery = true">
         保函查询
       </div>
+      <van-action-sheet v-model="showQuery" :actions="actions" cancel-text="取消" close-on-click-action @select="onSelect"
+        @cancel="showQuery = false" />
     </div>
-
+    <!-- 扫码 -->
     <div class="popup">
       <van-popup v-model="show">
         <img :src="contactCodeImg" alt="" style="width:100%">
         <p>微信扫码咨询</p>
       </van-popup>
     </div>
-
-    <div class="carousel">
+    <!-- 轮播图 -->
+    <div class="carousel margin">
       <h1 class="text1">{{ carousel.text1 }}</h1>
       <h3 class="text2">{{ carousel.text2 }}</h3>
       <div class="flex-box">
         <div class="left">
-          <van-button round @click="asking">立即咨询</van-button>
+          <img :src="carousel.imgurl" alt="图片未加载">
         </div>
         <div class="right">
-          <img :src="carousel.imgurl" alt="图片未加载">
+          <div class="btn round" @click="asking">立即咨询</div>
         </div>
       </div>
 
     </div>
-
-    <div class="production">
+    <!-- 产品 -->
+    <div class="production margin">
       <h3 class="title">产品介绍</h3>
       <div class="item" v-for="(item, index) in productions" :key="index" @click="asking">
         <div><img :src="item.icon" alt=""></div>
         <span>{{ item.title }}</span>
       </div>
     </div>
-
-    <div class="about">
+    <!-- 关于我们 -->
+    <div class="about margin">
+      <div class="title">关于我们</div>
+      <div class="nav">
+        <div class="nav-item" :class="active === item.title ? 'active' : ''" v-for="(item, index) in aboutList"
+          :key="index" @click="active = item.title">
+          {{ item.title }}
+        </div>
+      </div>
+      <div class="contant-box">
+        <div v-for="(item, index) in aboutList" :key="index" :style="active === item.title ? 'height:100%' : ''">
+          <AboutItem v-if="active === item.title" :title='item.title' :text="item.text" :text1="item.text1"
+            :contant="item.contant">
+            <template v-if="item.title === '联系我们'" #top>
+              <h1>ConectUs</h1>
+              <div class="slot">
+                <div class="center">
+                  <img src="@/assets/about_img/telephone.png" alt="">
+                </div>
+                <div>
+                  <p>客服热线:0791-8853610 / 13407938888</p>
+                  <p>邮箱:23778989@qq.com</p>
+                </div>
+              </div>
+            </template>
+            <template v-if="item.title === '联系我们'" #contant>
+              <div class="slot">
+                <div class="center">
+                  <img src="@/assets/about_img/address.png" alt="">
+                </div>
+                <div>
+                  <p>公司名称:江西江若科技有限公司</p>
+                  <p>联系地址:江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室</p>
+                </div>
+              </div>
+            </template>
+          </AboutItem>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="about">
       <div class="title">关于我们</div>
       <div class="flex-box">
         <div class="nav">
@@ -77,22 +144,22 @@
               </template>
             </AboutItem>
           </div>
-          <!-- <components :is="acitve" /> -->
         </div>
       </div>
-    </div>
-
-    <div class="partner">
+    </div> -->
+    <!-- 合作机构 -->
+    <div class="partner margin">
       <div class="title">合作机构</div>
       <div class="item-box">
         <div class="partner-item" v-for="(item, index) in partners" :key="index">
-          <van-image :src="item.imgUrl">
-          </van-image>
+          <!-- <img v-lazyload="item.imgUrl" :key="item.imgUrl" alt=""> -->
+          <img v-lazyload="item.imgUrl" v-if="item.imgUrl" />
+          <div class="partner-name" v-else>{{ item.name }}</div>
         </div>
       </div>
     </div>
-
-    <div class="footer">
+    <!-- 页脚 -->
+    <div class="footer margin">
       <div class="contant">
         <h3>联系我们</h3>
         <div class="address item">
@@ -142,22 +209,38 @@ import contactCode from '@/assets/home_img/contactCode.jpg'
 import baohanImg from '@/assets/home_img/baohan.png'
 import danbaoImg from '@/assets/home_img/danbao.png'
 import gongzhonghao from '@/assets/QRCode.jpg'
-
+// 合作机构logo
 import fcjy from '@/assets/home_img/partner/fcjy.jpg'
 import jjrd from '@/assets/home_img/partner/jjrd.jpg'
 import jjgd from '@/assets/home_img/partner/jjgd.jpg'
 import pxhy from '@/assets/home_img/partner/pxhy.jpg'
 import jjxyrd from '@/assets/home_img/partner/jjxyrd.jpg'
+
 import AboutItem from './components/aboutItem.vue'
 
 export default {
   name: "HomeMobile",
+  components: {
+    AboutItem,
+  },
   data() {
     return {
       show: false,
+      showQuery: false,
+      showJoin: false,
       contactCodeImg: contactCode,
       gongzhonghaoImg: gongzhonghao,
       active: "公司介绍",
+      actions: [
+        {
+          name: '剑邑快保',
+          url: 'https://www.ee.jxjrtech.com/#/query'
+        },
+        {
+          name: '九江工担',
+          url: 'https://ee.jjgdgs.com.cn/#/query'
+        }
+      ],
       carousel: {
         imgurl: imgurl1,
         text1: "江若科技是专业金融科技公司",
@@ -215,6 +298,30 @@ export default {
           imgUrl: jjxyrd
         }
       ],
+      personnelManagement: {
+        title: '开发负责人（南昌）',
+        tip: '开发负责人（南昌）| 1名 | 8k-15k（14薪）',
+        duty: [
+          "负责公司技术部人员管理，分配任务，制定计划；",
+          "负责公司信息化软件的管理（主要技术已经给第三方公司做，加入项目组接手项目）；",
+          "负责公司信息化软件的开发，根据需要迭代升级系统。",
+          "根据公司业务发展，开发其他系统、网站等。",
+        ],
+        Require: [
+          "熟悉Java开发语言，掌握Java基础、IO,多线程、集合、JVM等，熟悉面向对象程序设计；",
+          "熟练使用Springboot，Mybatis,Dubbo,Springcloud等主流框架；",
+          "熟悉Redis等常用的中间件；熟悉Mysql，Linux等；",
+          "有一定的项目管理经验。",
+        ],
+        address: '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室',
+        connect: '简历投递邮箱：23778989@qq.com 投递格式：意向岗位名称-姓名-联系方式-了解到该岗位的渠道（官网）'
+      },
+      personnelManagementDic: {
+        duty: '【岗位职责】',
+        Require: '【任职要求】',
+        address: '【工作地址】',
+        connect: '【联系方式】'
+      },
       address: {
         icon: "el-icon-location-outline",
         address: "江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室",
@@ -232,15 +339,102 @@ export default {
   methods: {
     asking() {
       this.show = true;
-    }
+    },
+    onSelect(item) {
+      location.assign(item.url)
+      this.showQuery = false
+    },
+
   },
-  components: { AboutItem }
 }
 </script>
 
 <style lang="less" scoped>
+@keyframes round {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
 .home-mobile {
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(64, 158, 255, .5), rgba(245, 245, 245, 1));
+
+  .margin {
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  .join-us {
+    position: fixed;
+    top: 60%;
+    right: 10px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #dedede;
+
+    img {
+      width: 50px;
+    }
+
+    // overflow: hidden;
+  }
+
+  /deep/.van-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    .personnel-management {
+      background-color: #fff;
+
+      .title {
+        font-size: 24px;
+        padding: 10px 16px;
+        margin: 0;
+      }
+
+      .tip {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+    }
+  }
+
+  .round::before {
+    content: "";
+    position: absolute;
+    width: calc(100% - 3px);
+    height: calc(100% - 3px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #efefef;
+    border-radius: 999px;
+    z-index: -1;
+  }
+
+  .round::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: orange;
+    transform-origin: 0 0;
+    animation: round 2s linear infinite;
+    z-index: -2;
+  }
 
   .top {
     padding: 20px 10px;
@@ -263,6 +457,7 @@ export default {
       text-align: center;
       border-radius: 5px;
       border: 1px solid #efefef;
+      overflow: hidden;
     }
   }
 
@@ -277,7 +472,7 @@ export default {
 
   .carousel {
     padding: 10px;
-    height: 300px;
+    min-height: 300px;
     background-color: rgb(28, 102, 222);
     color: white;
 
@@ -286,14 +481,28 @@ export default {
       align-items: center;
 
       .left {
-        flex: 2;
+        flex: 4;
+
+        img {
+          width: 100%;
+        }
       }
 
       .right {
         flex: 2;
+        text-align: center;
 
-        img {
-          width: 100%;
+        .btn {
+          position: relative;
+          padding: 10px 0;
+          margin: 0 auto;
+          width: 100px;
+          font-size: 16px;
+          // background-color: #fff;
+          color: #333;
+          border-radius: 999px;
+          overflow: hidden;
+          z-index: 0;
         }
       }
     }
@@ -304,23 +513,17 @@ export default {
     }
 
     h3 {
-      font-size: 14px;
-      margin-bottom: 30px;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
-  }
-
-  .title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
   }
 
   .production {
     padding: 20px 40px;
 
     .item {
-      margin-bottom: 40px;
       padding: 20px;
+      margin-bottom: 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -328,79 +531,78 @@ export default {
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, .1);
-      font-size: 20px;
+      font-size: 16px;
 
       img {
-        width: 60px;
+        width: 50px;
       }
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
     }
   }
 
   .about {
-    padding: 20px;
-    height: 350px;
+    min-height: 350px;
+
     .center {
       display: flex;
       align-items: center;
       margin-right: 5px;
     }
 
-    .flex-box {
+    .nav {
       display: flex;
+      justify-content: space-around;
+      color: #fff;
 
-      .nav {
-        margin-top: 20px;
-        color: #fff;
-
-        .nav-item {
-          padding: 20px 5px;
-          width: 130px;
-          font-size: 20px;
-          // background-color: #ce8a3c;
-        }
-      }
-
-      .contant-box {
-        flex: 1;
-        .slot{
-          display: flex;
-          img {
-            width: 35px;
-          }
-          p {
-            margin: 5px 0;
-            // text-align: center;
-          }
-        }
+      .nav-item {
+        padding: 20px 5px;
+        font-size: 20px;
       }
 
       .active {
-        color: #ce8a3c;
         display: flex;
         align-items: center;
+        color: #ce8a3c;
+        transform: scale(1.1)
       }
 
       .active::before {
         content: '';
-        display: inline-block;
         margin-right: 10px;
         width: 6px;
         height: 6px;
         border: 3px solid #ce8a3c;
         border-radius: 50%;
       }
+    }
 
-      // .active::after {
-      //   content: '——';
-      //   margin-left: .05rem;
-      //   color: #ce8a3c;
-      // }
+    .contant-box {
+      flex: 1;
+
+      .slot {
+        display: flex;
+        margin: 15px 0;
+
+        * {
+          margin: 0;
+        }
+
+        img {
+          width: 35px;
+        }
+
+        p {
+          margin: 5px 0;
+          // text-align: center;
+        }
+      }
     }
   }
 
   .partner {
-    padding: 20px;
-
     .item-box {
       display: flex;
       flex-wrap: wrap;
@@ -416,6 +618,15 @@ export default {
         height: 95px;
         background-color: #fff;
         border-radius: 10px;
+
+        img {
+          max-width: 100%;
+        }
+
+        .partner-name {
+          font-size: 14px;
+          font-weight: 800;
+        }
       }
     }
   }
@@ -424,7 +635,7 @@ export default {
     color: #fff;
     background-color: rgb(48, 48, 48);
     position: relative;
-    padding: 20px;
+    margin-bottom: 0;
 
     .contant {
       .item {

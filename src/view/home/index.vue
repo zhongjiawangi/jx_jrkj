@@ -65,7 +65,8 @@
         <MenuTitle :title="'合作机构'" :tip="'这里是tips'" />
         <div class="partner-box box">
           <el-card shadow="always" v-for="(item, index) in partnerList" :key="index">
-            <el-image :src="item.imgUrl" v-if="item.imgUrl"></el-image>
+            <img v-lazyload="item.imgUrl" v-if="item.imgUrl"/>
+            <!-- <el-image v-lazyload="item.imgUrl" v-if="item.imgUrl"></el-image> -->
             <div v-else class="line">{{ item.name }}</div>
           </el-card>
         </div>
@@ -193,7 +194,6 @@ export default {
 <style lang="less" scoped>
 .home {
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(64, 158, 255, .5), rgba(245, 245, 245, 1));
-
   .dialog {
     text-align: center;
   }
@@ -309,7 +309,6 @@ export default {
         height: 2.75rem;
         font-size: 0.2rem;
         color: rgb(82, 128, 255);
-        background: url('@/assets/home_img/border.png') no-repeat left top;
         background-size: contain;
 
         span {
@@ -351,6 +350,9 @@ export default {
         font-size: 0.225rem;
         font-weight: 800;
         cursor: pointer;
+        img {
+          max-width: 100%;
+        }
       }
 
       .el-card:hover {
