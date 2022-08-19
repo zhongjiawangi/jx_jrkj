@@ -12,6 +12,7 @@ const Mobile = () => import("@/view/mobile/index.vue");
 const Query = () => import("@/view/mobile/view/query");
 const Info = () => import("@/view/mobile/view/query/info.vue");
 const MainQuery = () => import("@/view/mobile/view/query/query.vue");
+const HomeMobile = () => import("@/view/mobile/view/home/index.vue")
 
 const routes = [
   {
@@ -40,8 +41,12 @@ const routes = [
     path: "/mobile",
     name: "手机端",
     component: Mobile,
-    redirect: "/mobile/query",
+    redirect: "/mobile/home",
     children: [
+      {
+        path: "/mobile/home",
+        component: HomeMobile
+      },
       {
         path: "/mobile/query",
         component: Query,
