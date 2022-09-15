@@ -208,6 +208,7 @@ import imgurl1 from '@/assets/home_img/img1.png'
 import contactCode from '@/assets/home_img/contactCode.jpg'
 import baohanImg from '@/assets/home_img/baohan.png'
 import danbaoImg from '@/assets/home_img/danbao.png'
+import zhaobiaoImg from '@/assets/home_img/zhaobiao.png'
 import gongzhonghao from '@/assets/QRCode.jpg'
 // 合作机构logo
 import fcjy from '@/assets/home_img/partner/fcjy.jpg'
@@ -255,6 +256,10 @@ export default {
           title: "金融担保审批系统",
           icon: danbaoImg,
         },
+        {
+          title: '招标查询系统—赣标通',
+          icon: zhaobiaoImg
+        }
       ],
       aboutList: [
         {
