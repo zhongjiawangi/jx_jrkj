@@ -27,6 +27,8 @@
   </div>
 </template>
 <script>
+import { queryList } from '@/partner'
+
 export default {
   name: 'layOut',
   data() {
@@ -47,16 +49,7 @@ export default {
         },
         {
           name: '保函查询',
-          children: [
-            {
-              name: '剑邑快保',
-              url: 'https://www.ee.jxjrtech.com/#/query'
-            },
-            {
-              name: '九江工担',
-              url: 'https://ee.jjgdgs.com.cn/#/query'
-            }
-          ]
+          children: queryList
         },
         {
           name: '公司简介',
