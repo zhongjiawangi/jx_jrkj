@@ -1,6 +1,9 @@
 <template>
   <div class="introduce">
-    <div class="item" v-for="(item, index) in info.data" :key="index">
+    <div class="item" :class="{
+      'animate__animated animate__lightSpeedInLeft': index == 0,
+      'animate__animated animate__lightSpeedInRight': index == 1,
+    }" v-for="(item, index) in info.data" :key="index">
       <div class="left">
         <div class="content">
           <h3>{{ item.companyName }}</h3>

@@ -1,6 +1,10 @@
 <template>
   <div class="condition">
-    <div class="item" v-for="(item, index) in info.data" :key="index">
+    <div class="item" :class="{
+      'animate__animated animate__slideInLeft': index == 0,
+      'animate__animated animate__slideInDown': index == 1,
+      'animate__animated animate__slideInRight': index == 2
+    }" v-for="(item, index) in info.data" :key="index">
       <div class="index">{{ "0" + (index + 1) }}</div>
       <div class="content">
         <h3>{{ item.title }}</h3>

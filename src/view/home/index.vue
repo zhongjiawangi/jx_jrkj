@@ -23,7 +23,7 @@
         <MenuTitle :title="'产品介绍'" />
         <el-carousel indicator-position="none" height="600px" ref="carousel" style="margin: 1.5rem 0;">
           <el-carousel-item v-for="item in productionList" :key="item.title">
-            <div class="carousel-item">
+            <div class="carousel-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
               <h3>{{ item.title }}</h3>
               <div class="img">
                 <img :src="item.pic" alt="">
@@ -158,8 +158,13 @@ export default {
     }
   },
   methods: {
-    test() {
-      this.$refs.carousel.next()
+    mouseEnter(e) {
+      const el = e.target
+      el.children[el.children.length - 1].className += ' animate__animated animate__bounce'
+    },
+    mouseLeave(e) {
+      const el = e.target
+      el.children[el.children.length - 1].className = 'content'
     },
     asking() {
       this.$store.commit('changeDialog');

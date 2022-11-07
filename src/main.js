@@ -9,7 +9,7 @@ import '@/js/flexible.js'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import Lazyload from './js/lazyload'
-
+import 'animate.css';
 // 参数均为可选
 Vue.use(Lazyload, {
     scrollDistance: 15, // 距离可视区还有15px时开发加载资源

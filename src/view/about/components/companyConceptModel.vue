@@ -1,5 +1,5 @@
 <template>
-  <div class="conceptModel">
+  <div class="conceptModel animate__animated animate__bounceInDown">
     <div id="box">
       <div class="jr"><span>江若</span></div>
       <div class="concept-model-item" v-for="(item, index) in info.data" :key="index">

@@ -1,17 +1,17 @@
 <template>
   <div class="construction">
     <div class="box" v-for="(item, index) in info.data" :key="index">
-      <div class="left">
-        <div class="child" v-for="index in 3" :key="index">
-          {{ item.children[index] }}
+      <div class="left animate__animated animate__fadeInTopLeft">
+        <div class="child" v-for="(child, index) in item.children?.slice(0, 3)" :key="index">
+          {{ child }}
         </div>
       </div>
       <div class="center">
         <div class="hierarchyName">{{ item.hierarchyName }}</div>
       </div>
-      <div class="right">
-        <div class="child" v-for="index in 3" :key="index">
-          {{ item.children[index] }}
+      <div class="right animate__animated animate__fadeInBottomRight">
+        <div class="child" v-for="(child, index) in item.children?.slice(-3)" :key="index">
+          {{ child }}
         </div>
       </div>
     </div>

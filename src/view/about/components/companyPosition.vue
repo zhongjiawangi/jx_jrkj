@@ -1,5 +1,5 @@
 <template>
-  <div class="porsition">
+  <div class="porsition animate__animated animate__rollIn">
     <img class="left" :src="info.pic" alt="">
     <div class="right">
       <div class="content">
