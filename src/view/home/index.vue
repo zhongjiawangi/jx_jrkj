@@ -21,14 +21,19 @@
     <div class="production">
       <div class="w_c">
         <MenuTitle :title="'产品介绍'" />
-        <div class="production-box box">
-          <ul>
-            <li v-for="(item, index) in serveList" :key="index" @click="asking">
-              <div><img :src="item.icon" alt=""></div>
-              <span>{{ item.title }}</span>
-            </li>
-          </ul>
-        </div>
+        <el-carousel indicator-position="none" height="600px" ref="carousel" style="margin: 1.5rem 0;">
+          <el-carousel-item v-for="item in productionList" :key="item.title">
+            <div class="carousel-item">
+              <h3>{{ item.title }}</h3>
+              <div class="img">
+                <img :src="item.pic" alt="">
+              </div>
+              <div class="content">
+                {{ item.content }}
+              </div>
+            </div>
+          </el-carousel-item>
+        </el-carousel>
       </div>
     </div>
     <!-- 项目流程 -->
@@ -82,13 +87,13 @@ import CarouselItem from '@/components/CarouselItem'
 import imgurl1 from '@/assets/home_img/img1.png'
 import MenuTitle from '@/components/menuTitle.vue'
 import Footer from '@/components/footer.vue'
-import baohanImg from '@/assets/home_img/baohan.png'
-import danbaoImg from '@/assets/home_img/danbao.png'
-import zhaobiaoImg from '@/assets/home_img/zhaobiao.png'
+// import baohanImg from '@/assets/home_img/baohan.png'
+// import danbaoImg from '@/assets/home_img/danbao.png'
+// import zhaobiaoImg from '@/assets/home_img/zhaobiao.png'
 
 import contactCode from '@/assets/home_img/contactCode.jpg'
 
-import { partnerList } from '@/partner'
+import { partnerList, productionList } from '@/info'
 
 export default {
   name: 'homePage',
@@ -107,20 +112,7 @@ export default {
         text1: '江若科技是专业金融科技公司',
         text2: '为金融机构提供电子投标保函系统、金融担保审批系统',
       },
-      serveList: [
-        {
-          title: '电子投标保函系统',
-          icon: baohanImg,
-        },
-        {
-          title: '金融担保审批系统',
-          icon: danbaoImg,
-        },
-        {
-          title: '招标查询系统—赣标通',
-          icon: zhaobiaoImg
-        }
-      ],
+      productionList,
       // stepInfo: [
       //   {
       //     percentage: 0,
@@ -162,10 +154,13 @@ export default {
       //     text2: '真实性、防伪性，方便核验真伪',
       //   },
       // ],
-      partnerList: partnerList
+      partnerList
     }
   },
   methods: {
+    test() {
+      this.$refs.carousel.next()
+    },
     asking() {
       this.$store.commit('changeDialog');
     },
@@ -211,6 +206,31 @@ export default {
   }
 
   .production {
+    .carousel-item {
+      height: 100%;
+      width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        font-size: 22px;
+
+      }
+
+      img {
+        width: 100%;
+        margin: 30px 0;
+        border-radius: 10px;
+      }
+
+      .content {
+        font-size: 16px;
+        padding: 0 20px;
+      }
+    }
 
     // height: 10rem;
     .production-box {

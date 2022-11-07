@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import { queryList } from '@/partner'
+import { queryList } from '@/info'
 
 export default {
   name: 'layOut',

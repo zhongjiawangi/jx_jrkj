@@ -211,7 +211,7 @@ import danbaoImg from '@/assets/home_img/danbao.png'
 import zhaobiaoImg from '@/assets/home_img/zhaobiao.png'
 import gongzhonghao from '@/assets/QRCode.jpg'
 // 合作机构logo
-import { partnerList, queryList } from '@/partner'
+import { partnerList, queryList } from '@/info'
 
 
 import AboutItem from './components/aboutItem.vue'
