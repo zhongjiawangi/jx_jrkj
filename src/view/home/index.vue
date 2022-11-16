@@ -1,5 +1,25 @@
 <template>
   <div class="home">
+    <el-dialog title="提示" :visible.sync="dialog" width="60%"  :close-on-click-modal="false">
+      <div style="display: flex;margin-bottom: 20px;">
+        <div style="width: 100px;">链接：</div>
+        <el-input v-model="str" placeholder="请输入内容"></el-input>
+      </div>
+      <div style="display: flex;margin-bottom: 20px;">
+        <div style="width: 100px;">剑邑链接：</div>
+        <el-input v-model="jy" placeholder="请输入内容"></el-input>
+        <el-button @click="jump('jy')">跳转</el-button>
+      </div>
+      <div style="display: flex;margin-bottom: 20px;">
+        <div style="width: 100px;">金盛源链接：</div>
+        <el-input v-model="jsy" placeholder="请输入内容"></el-input>
+        <el-button @click="jump('jsy')">跳转</el-button>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
     <div class="dialog">
       <el-dialog :visible.sync="$store.state.dialogVisible" width="30%">
         <div class="info">
@@ -10,11 +30,6 @@
     </div>
     <!-- 轮播图 -->
     <div class="carousel">
-      <!-- <el-carousel :interval="5000" height="10rem">
-        <el-carousel-item v-for="(item, index) in carousel" :key="index">
-          <CarouselItem :text1="item.text1" :text2="item.text2" :text3="item.text3" :imgurl="item.imgurl" />
-        </el-carousel-item>
-      </el-carousel> -->
       <CarouselItem :text1="carousel.text1" :text2="carousel.text2" :imgurl="carousel.imgurl" />
     </div>
     <!-- 产品介绍 -->
@@ -71,7 +86,6 @@
         <div class="partner-box box">
           <el-card shadow="always" v-for="(item, index) in partnerList" :key="index">
             <img v-lazyload="item.imgUrl" v-if="item.imgUrl" />
-            <!-- <el-image v-lazyload="item.imgUrl" v-if="item.imgUrl"></el-image> -->
             <div v-else class="line">{{ item.name }}</div>
           </el-card>
         </div>
@@ -87,9 +101,6 @@ import CarouselItem from '@/components/CarouselItem'
 import imgurl1 from '@/assets/home_img/img1.png'
 import MenuTitle from '@/components/menuTitle.vue'
 import Footer from '@/components/footer.vue'
-// import baohanImg from '@/assets/home_img/baohan.png'
-// import danbaoImg from '@/assets/home_img/danbao.png'
-// import zhaobiaoImg from '@/assets/home_img/zhaobiao.png'
 
 import contactCode from '@/assets/home_img/contactCode.jpg'
 
@@ -105,6 +116,8 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      dialog: false,
+      str: '',
       url: contactCode,
       carousel:
       {
@@ -157,7 +170,28 @@ export default {
       partnerList
     }
   },
+  computed: {
+    jy() {
+      const reg = /orderId.+Id=[15]/
+      const res = this.str.match(reg)
+      if (res){
+        return `https://www.ee.customer.jxjrtech.com/?${res[0]}`
+      }
+      return `https://www.ee.customer.jxjrtech.com/?`
+    },
+    jsy() {
+      const reg = /orderId.+Id=[15]/
+      const res = this.str.match(reg)
+      if (res){
+        return `http://223.84.197.180:8081/customer/?${res[0]}`
+      }
+      return `http://223.84.197.180:8081/customer/?`
+    },
+  },
   methods: {
+    jump(name) {
+      window.open(this[name], "_blank")
+    },
     mouseEnter(e) {
       const el = e.target
       el.children[el.children.length - 1].className += ' animate__animated animate__bounce'

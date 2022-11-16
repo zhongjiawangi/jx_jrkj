@@ -201,3 +201,35 @@ export const conpanyInfo = {
     ],
   },
 };
+
+export const manpowerInfo = {
+  list: [
+    {
+      id: 1,
+      jobName: '开发负责人 [南昌]',
+      simple: {
+        salary: "8k-15k·14薪",
+        workExperience: '2-8年',
+        education: '专科',
+        keywords: ['人员管理', '软件管理', '业务发展', 'Java', 'Mysql', 'Linux'],
+        welfare: '带薪年假，五险一金，全勤奖，年终奖，三节福利，包午餐，节日福利，员工旅游',
+      },
+      detail: {
+        jobDescription: [
+          '负责公司技术部人员管理，分配任务，制定计划；',
+          '负责公司信息化软件的管理(主要技术已经给第三方公司做，加入项目组接手项目)；',
+          '负责公司信息化软件的开发，根据需要迭代升级系统；',
+          '根据公司业务发展，开发其他系统、网站等；'
+        ],
+        jobRequirements: [
+          '熟悉Java开发语言，掌握Java基础、IO,多线程、集合、JVM等，熟悉面向对象程序设计；',
+          '熟练使用Springboot，Mybatis,Dubbo,Springcloud等主流框架；',
+          '熟悉Redis等常用的中间件；熟悉Mysql，Linux等；',
+          '有一定的项目管理经验最佳；'
+        ],
+        workAddress: '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室',
+        contactWay: '简历投递邮箱：23778989@qq.com 投递格式：意向岗位名称-姓名-联系方式-了解到该岗位的渠道'
+      }
+    }
+  ]
+}

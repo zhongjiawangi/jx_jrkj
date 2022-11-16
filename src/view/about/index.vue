@@ -3,46 +3,9 @@
         <div class="w_c container">
             <el-tabs type="border-card" tabPosition="left" @tab-click="tabClick">
                 <el-tab-pane v-for="(item, index) in list" :key="index" :label="item.label">
-                    <!-- <div>{{ conpanyInfo[item.value] }}</div> -->
                     <component ref="keys" :info="conpanyInfo[item.value]" :is="showComponent"></component>
                 </el-tab-pane>
             </el-tabs>
-            <!-- <div class="left">
-                <dl>
-                    <dt>关于我们</dt>
-                    <dd v-for="(item, index) in list" :key="index" @click="active = item.title"
-                        :class="active === item.title ? 'active' : ''">{{ item.title }}</dd>
-                </dl>
-            </div>
-            <div class="right">
-                <div v-for="(item, index) in list" :key="index">
-                    <Detail v-if="active === item.title" :title="item.title" :text="item.text" :text1="item.text1"
-                        :contant="item.contant">
-                        <template v-if="item.title === '联系我们'" #top>
-                            <div class="slot">
-                                <div>
-                                    <img src="@/assets/about_img/telephone.png" alt="">
-                                </div>
-                                <div>
-                                    <p>客服热线:0791-8853610 / 13407938888</p>
-                                    <p>邮箱:23778989@qq.com</p>
-                                </div>
-                            </div>
-                        </template>
-                        <template v-if="item.title === '联系我们'" #contant>
-                            <div class="slot">
-                                <div>
-                                    <img src="@/assets/about_img/address.png" alt="">
-                                </div>
-                                <div>
-                                    <p>公司名称:江西江若科技有限公司</p>
-                                    <p>联系地址:江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室</p>
-                                </div>
-                            </div>
-                        </template>
-                    </Detail>
-                </div>
-            </div> -->
         </div>
     </div>
 </template>
@@ -127,8 +90,8 @@ export default {
 
 <style lang="less" scoped>
 .about {
-    padding-top: 1.5rem;
-    height: calc(100vh - 1.25rem);
+    padding-top: 120px;
+    height: calc(100vh - 100px);
     background-image: linear-gradient(to bottom left, rgba(245, 245, 245, 1), rgba(64, 158, 255, .5), rgba(255, 255, 255, 1));
 
 
@@ -139,67 +102,6 @@ export default {
 
         .el-tabs {
             width: 100%;
-        }
-
-        .left {
-            width: 20%;
-            margin-top: 1rem;
-
-            dl {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                justify-content: flex-start;
-            }
-
-            dd,
-            dt {
-                padding-left: .125rem;
-                height: .625rem;
-                line-height: .625rem;
-                font-size: .35rem;
-            }
-
-            dd {
-                cursor: pointer;
-                font-size: .3rem;
-                vertical-align: middle;
-            }
-
-            .active {
-                color: #ce8a3c;
-                font-size: .3rem;
-            }
-
-            .active::before {
-                content: '';
-                display: inline-block;
-                margin-right: .0625rem;
-                width: .08rem;
-                height: .08rem;
-                border: .06rem solid #ce8a3c;
-                border-radius: 50%;
-            }
-
-            .active::after {
-                content: '——';
-                margin-left: .05rem;
-                color: #ce8a3c;
-            }
-        }
-
-        .right {
-            flex: 1;
-
-            .slot {
-                display: flex;
-                margin: .25rem;
-
-                img {
-                    margin-right: .125rem;
-                }
-            }
         }
     }
 }

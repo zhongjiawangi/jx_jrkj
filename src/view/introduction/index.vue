@@ -33,7 +33,7 @@
                         </div>
                         <div class="contant" v-for="(item, index) in cultureinfo.cultures" :key="index">
                             <div class="img">
-                                <img :src="item.img"/>
+                                <img :src="item.img" />
                             </div>
                             <div class="text">
                                 <p>{{ item.name }}</p>
@@ -50,7 +50,7 @@
         <div class="welfare ">
             <MenuTitle :title="'员工福利'" />
             <div class="photo_box">
-                <el-carousel :interval="3000" type="card" height="6rem">
+                <el-carousel :interval="3000" type="card" height="480px">
                     <el-carousel-item v-for="(item, index) in welfareInfo" :key="index">
                         <el-card>
                             <div class="photo">
@@ -159,11 +159,11 @@ export default {
 <style lang="less" scoped>
 .introduction {
     .title {
-        border-left: 0.025rem solid rgb(28, 102, 222);
-        padding: 0.125rem 0;
-        padding-left: 0.25rem;
-        margin: 0.375rem 0;
-        font-size: 0.35rem;
+        border-left: 2px solid rgb(28, 102, 222);
+        padding: 10px 0;
+        padding-left: 20px;
+        margin: 30px 0;
+        font-size: 28px;
 
         p {
             color: #999;
@@ -171,7 +171,6 @@ export default {
         }
 
         h2 {
-            font-size: 0.35rem;
             font-weight: 800;
         }
     }
@@ -180,7 +179,7 @@ export default {
     .culture {
         display: flex;
         justify-content: space-around;
-        padding: 0.625rem 0;
+        padding: 50px 0;
 
         .left,
         .right {
@@ -190,13 +189,12 @@ export default {
 
     .about {
         .left {
-            margin-right: 0.375rem;
+            margin-right: 30px;
 
             .text {
                 p {
-                    // height: .225rem;
-                    line-height: 0.35rem;
-                    font-size: 0.2rem;
+                    line-height: 28px;
+                    font-size: 16px;
                     color: #333;
                     text-indent: 2em;
                 }
@@ -205,22 +203,22 @@ export default {
     }
 
     .welfare {
-        padding: 0 1rem;
+        padding: 0 80px;
 
         .photo_box {
-            margin: 1.5rem 0;
-            margin-top: 1rem;
+            margin: 120px 0;
+            margin-top: 80px;
 
             /deep/.el-carousel__arrow {
                 background-color: rgba(31, 45, 61, 0.3);
-                width: .5rem;
-                height: .5rem;
-                font-size: .2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
 
             .el-card {
                 // height: 50px;
-                font-size: .3rem;
+                font-size: 24px;
 
                 .photo {
                     display: flex;
@@ -228,7 +226,7 @@ export default {
                     align-items: center;
 
                     p {
-                        padding: 0 .2rem;
+                        padding: 0 16px;
                     }
                 }
             }
@@ -246,17 +244,18 @@ export default {
             .contant {
                 display: flex;
                 align-items: center;
-                margin-bottom: 0.25rem;
+                margin-bottom: 20px;
+
                 img {
-                    width:.9rem;
+                    width: 72px;
                 }
 
                 .text {
-                    padding-left: 0.25rem;
+                    padding-left: 20px;
 
                     p {
-                        margin: 0.0625rem 0;
-                        font-size: 0.2rem;
+                        margin: 5px 0;
+                        font-size: 16px;
                         font-weight: 800;
 
                         span {

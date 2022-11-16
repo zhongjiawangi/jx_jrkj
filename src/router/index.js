@@ -6,8 +6,8 @@ Vue.use(VueRouter);
 const Layout = () => import("@/layout");
 const Home = () => import("@/view/home/index.vue");
 const About = () => import("@/view/about/index.vue");
-// const Introduction = () => import("@/view/introduction/index.vue");
-const Contact = () => import("@/view/contact/index.vue");
+const Manpower = () => import("@/view/manpower/index.vue");
+const ManpowerList = () => import("@/view/manpower/view/list");
 const Mobile = () => import("@/view/mobile/index.vue");
 const Query = () => import("@/view/mobile/view/query");
 const Info = () => import("@/view/mobile/view/query/info.vue");
@@ -17,7 +17,7 @@ const HomeMobile = () => import("@/view/mobile/view/home/index.vue");
 const routes = [
   {
     path: "/",
-    name: "layout",
+    // name: "layout",
     component: Layout,
     children: [
       {
@@ -26,9 +26,21 @@ const routes = [
         component: Home,
       },
       {
-        path: "/contact",
-        name: "联系我们",
-        component: Contact,
+        path: "/manpower",
+        // name: "人力资源",
+        component: Manpower,
+        children: [
+          {
+            path: "/",
+            name: "信息列表",
+            component: ManpowerList,
+          },
+          {
+            path: "/manpower/detail",
+            name: "信息详情",
+            component: () => import("@/view/manpower/view/detail"),
+          }
+        ]
       },
       {
         path: "/introduction",

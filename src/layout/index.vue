@@ -57,7 +57,7 @@ export default {
         },
         {
           name: '人力资源',
-          url: '/contact',
+          url: '/manpower',
         },
       ],
     }
@@ -130,36 +130,36 @@ export default {
 </script>
 <style lang="less" scoped>
 .layout {
-  overflow-y: hidden;
-  padding-top: 1.25rem;
+  // overflow-y: hidden;
+  padding-top: 100px;
 
   .top {
     position: fixed;
     top: 0;
-    height: 1.25rem;
+    height: 100px;
     width: 100%;
     z-index: 1000;
     background-color: rgb(28, 102, 222);
-    box-shadow: 0px .025rem .15rem rgba(0, 0, 0, .1);
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, .1);
 
     .container {
       display: flex;
       justify-content: space-around;
-      height: 1.25rem;
+      height: 100px;
 
       .logo {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-right: 100px;
 
         img {
-          width: .65rem;
+          width: 52px;
         }
 
         span {
-          font-size: 0.35rem;
+          font-size: 28px;
           color: #fff;
-          // font-weight: bold;
           font-family: '微软雅黑';
         }
       }
@@ -169,15 +169,16 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 1.25rem;
+        height: 100px;
 
         .menu-item {
-          flex: 1;
-          height: 0.5rem;
+          padding: 0 10px;
+          white-space: nowrap;
+          height: 40px;
           text-align: center;
-          line-height: 0.5rem;
+          line-height: 40px;
           cursor: pointer;
-          font-size: 0.25rem;
+          font-size: 20px;
           color: #fff;
           transition: all 0.5s;
 
