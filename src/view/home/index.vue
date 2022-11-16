@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-dialog title="提示" :visible.sync="dialog" width="60%"  :close-on-click-modal="false">
+    <el-dialog title="提示" :visible.sync="dialog" width="60%" :close-on-click-modal="false">
       <div style="display: flex;margin-bottom: 20px;">
         <div style="width: 100px;">链接：</div>
         <el-input v-model="str" placeholder="请输入内容"></el-input>
@@ -27,6 +27,15 @@
           <img :src="url" alt="" style="width:100%">
         </div>
       </el-dialog>
+      <el-dialog :visible.sync="productDialog">
+        <div class="carousel-item">
+          <h3>{{ activeInfo.title }}</h3>
+          <img :src="activeInfo.pic" alt="">
+          <p class="content">
+            {{ activeInfo.content }}
+          </p>
+        </div>
+      </el-dialog>
     </div>
     <!-- 轮播图 -->
     <div class="carousel">
@@ -36,7 +45,7 @@
     <div class="production">
       <div class="w_c">
         <MenuTitle :title="'产品介绍'" />
-        <el-carousel indicator-position="none" height="600px" ref="carousel" style="margin: 1.5rem 0;">
+        <!-- <el-carousel indicator-position="none" height="600px" ref="carousel" style="margin: 1.5rem 0;">
           <el-carousel-item v-for="item in productionList" :key="item.title">
             <div class="carousel-item" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
               <h3>{{ item.title }}</h3>
@@ -48,7 +57,13 @@
               </div>
             </div>
           </el-carousel-item>
-        </el-carousel>
+        </el-carousel> -->
+        <ul class="box">
+          <li v-for="(item, index) in productionList" :key="index" @click="productionInfo(item)">
+            <div><img :src="item.icon" alt=""></div>
+            <span>{{ item.title }}</span>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- 项目流程 -->
@@ -117,13 +132,15 @@ export default {
     return {
       dialogVisible: false,
       dialog: false,
+      productDialog: false,
+      activeInfo: {},
       str: '',
       url: contactCode,
       carousel:
       {
         imgurl: imgurl1,
         text1: '江若科技是专业金融科技公司',
-        text2: '为金融机构提供电子投标保函系统、金融担保审批系统',
+        text2: '为金融机构提供电子投标保函系统、金融担保审批系统，赣保通',
       },
       productionList,
       // stepInfo: [
@@ -174,7 +191,7 @@ export default {
     jy() {
       const reg = /orderId.+Id=[15]/
       const res = this.str.match(reg)
-      if (res){
+      if (res) {
         return `https://www.ee.customer.jxjrtech.com/?${res[0]}`
       }
       return `https://www.ee.customer.jxjrtech.com/?`
@@ -182,13 +199,17 @@ export default {
     jsy() {
       const reg = /orderId.+Id=[15]/
       const res = this.str.match(reg)
-      if (res){
+      if (res) {
         return `http://223.84.197.180:8081/customer/?${res[0]}`
       }
       return `http://223.84.197.180:8081/customer/?`
     },
   },
   methods: {
+    productionInfo(item) {
+      this.activeInfo = item
+      this.productDialog = true
+    },
     jump(name) {
       window.open(this[name], "_blank")
     },
@@ -244,68 +265,50 @@ export default {
     }
   }
 
-  .production {
-    .carousel-item {
-      height: 100%;
-      width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      h3 {
-        font-size: 22px;
-
-      }
-
-      img {
-        width: 100%;
-        margin: 30px 0;
-        border-radius: 10px;
-      }
-
-      .content {
-        font-size: 16px;
-        padding: 0 20px;
-      }
+  .carousel-item {
+    width: 100%;
+    h3 {
+      font-size: 20px;
+      color: #000;
     }
+    img {
+      max-width: 90%;
+      margin: 30px 0 20px;
+    }
+  }
 
-    // height: 10rem;
-    .production-box {
-      // margin: 1.65rem 0;
+  .production {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
 
-      ul {
+      li {
+        width: 30%;
+        height: 200px;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        background-color: #fff;
+        border-radius: .0625rem;
+        cursor: pointer;
+        transition: all .2s;
 
-        li {
-          width: 30%;
-          height: 2.5rem;
-          // border: .0125rem solid #dedede;
-          // margin-left: -0.0125rem;
-          // margin-bottom: -0.0125rem;
-          margin: .0625rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: #fff;
-          border-radius: .0625rem;
-          cursor: pointer;
-
-          div img {
-            width: .8rem;
-          }
-
-          span {
-            margin: 0.1rem 0;
-            font-size: .25rem;
-          }
+        div img {
+          width: 64px;
         }
 
+        span {
+          margin: 8px 0;
+          font-size: 20px;
+        }
       }
+
+      li:hover {
+        box-shadow: 2px 2px 30px 0 hsla(0, 0%, 60%, .5);
+      }
+
     }
   }
 
@@ -400,7 +403,7 @@ export default {
       }
 
       .el-card:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
       }
 
       .line {

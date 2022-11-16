@@ -10,6 +10,9 @@ import pxrd from "@/assets/home_img/partner/pxrd.jpg";
 import electronicSystem from "@/assets/home_img/product/electronicSystem.png";
 import approvingSystem from "@/assets/home_img/product/approvingSystem.png";
 import gbt from "@/assets/home_img/product/gbt.png";
+import system_icon from '@/assets/home_img/baohan.png'
+import danbao_icon from '@/assets/home_img/danbao.png'
+import gbt_icon from '@/assets/home_img/zhaobiao.png'
 // 公司图片
 import jrkj from "@/assets/about_img/jrkj.png";
 import jrfr from "@/assets/about_img/jrfr.png";
@@ -69,18 +72,21 @@ export const productionList = [
   {
     title: "电子投标保函系统",
     pic: electronicSystem,
+    icon: system_icon,
     content:
       "电子保函办理服务平台在线提交保函申请，保费支付和保函出具，全程在线办理，手续简单便捷。",
   },
   {
     title: "金融担保审批系统",
     pic: approvingSystem,
+    icon: danbao_icon,
     content:
       "打造担保交易、信用服务与大数据风控三位一体化金融审批系统。提供多种保函产品，为客户提供更加专业高效的保函服务。",
   },
   {
-    title: "招标查询系统—赣标通",
+    title: "招标查询系统—赣保通",
     pic: gbt,
+    icon: gbt_icon,
     content: "打造江西一流招标信息查询系统",
   },
 ];
@@ -209,7 +215,7 @@ export const manpowerInfo = {
       jobName: '开发负责人 [南昌]',
       simple: {
         salary: "8k-15k·14薪",
-        workExperience: '2-8年',
+        workExperience: '2-8 年',
         education: '专科',
         keywords: ['人员管理', '软件管理', '业务发展', 'Java', 'Mysql', 'Linux'],
         welfare: '带薪年假，五险一金，全勤奖，年终奖，三节福利，包午餐，节日福利，员工旅游',

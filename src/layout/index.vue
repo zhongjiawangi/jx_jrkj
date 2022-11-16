@@ -108,7 +108,7 @@ export default {
       }, 15)
     },
     query(url) {
-      window.location.href = url
+      window.open(url, '_blank')
     },
     enter(item) {
       if (item.children) {
@@ -181,9 +181,16 @@ export default {
           font-size: 20px;
           color: #fff;
           transition: all 0.5s;
-
+          position: relative;
+          .children  {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+          }
           .item {
             background-color: rgb(28, 102, 222);
+            // background-color: #fff;
+            padding: 5px 10px;
           }
 
           .item:hover {

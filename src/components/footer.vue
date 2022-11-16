@@ -56,7 +56,7 @@ export default {
 .footerComponent {
   padding: 1rem 0 0.9rem;
   color: #fff;
-  background-color: rgb(48, 48, 48);
+  background-color: rgba(40, 40, 40, 1);
   position: relative;
 
   .foot {
@@ -98,7 +98,7 @@ export default {
     bottom: 0;
     height: 0.375rem;
     width: 100%;
-    background-color: #999;
+    background-color: rgba(48, 48, 48, 1);
     text-align: center;
     line-height: 0.375rem;
     font-size: .15rem;
