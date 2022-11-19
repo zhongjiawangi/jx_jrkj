@@ -1,16 +1,16 @@
 <template>
   <div class="construction">
-    <div class="box" v-for="(item, index) in info.data" :key="index">
+    <div class="box">
       <div class="left animate__animated animate__fadeInTopLeft">
-        <div class="child" v-for="(child, index) in item.children?.slice(0, 3)" :key="index">
+        <div class="child" v-for="(child, index) in children.slice(0, 3)" :key="index">
           {{ child }}
         </div>
       </div>
       <div class="center">
-        <div class="hierarchyName">{{ item.hierarchyName }}</div>
+        <div class="hierarchyName">{{ info.data.hierarchyName }}</div>
       </div>
       <div class="right animate__animated animate__fadeInBottomRight">
-        <div class="child" v-for="(child, index) in item.children?.slice(-3)" :key="index">
+        <div class="child" v-for="(child, index) in children.slice(-3)" :key="index">
           {{ child }}
         </div>
       </div>
@@ -20,14 +20,17 @@
 
 <script>
 export default {
+  name: 'constructionPage',
   props: {
     info: {
       type: Object,
       default: () => { },
     }
   },
-  data() {
-    return {}
+  computed: {
+    children() {
+      return this.info?.data?.children || []
+    }
   }
 }
 </script>

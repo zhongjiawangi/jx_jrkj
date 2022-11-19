@@ -26,7 +26,9 @@
         </div>
         <div class="item">
           <p>联系方式:</p>
-          <p>{{ info.detail.contactWay }}</p>
+          <p v-for="(way, index) in info.detail.contactWay" :key="way">
+            {{ index + 1 + '.' + way }}
+          </p>
         </div>
       </div>
     </div>
