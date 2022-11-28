@@ -3,13 +3,16 @@ import gzjsy from '@/assets/home_img/partner/gzjsy.png'
 import fcjy from '@/assets/home_img/partner/fcjy.jpg'
 import jjrd from '@/assets/home_img/partner/jjrd.jpg'
 import jjgd from '@/assets/home_img/partner/jjgd.jpg'
-import pxhy from '@/assets/home_img/partner/pxhy.jpg'
+// import pxhy from '@/assets/home_img/partner/pxhy.jpg'
 import jjxyrd from '@/assets/home_img/partner/jjxyrd.jpg'
 import pxrd from '@/assets/home_img/partner/pxrd.jpg'
 // 产品图片
 import electronicSystem from '@/assets/home_img/product/electronicSystem.png'
+import electronicSystem_mobile from '@/assets/home_img/product/electronicSystem_mobile.png'
 import approvingSystem from '@/assets/home_img/product/approvingSystem.png'
+import approvingSystem_mobile from '@/assets/home_img/product/approvingSystem_mobile.png'
 import gbt from '@/assets/home_img/product/gbt.png'
+import gbt_mobile from '@/assets/home_img/product/gbt_mobile.png'
 import system_icon from '@/assets/home_img/baohan.png'
 import danbao_icon from '@/assets/home_img/danbao.png'
 import gbt_icon from '@/assets/home_img/zhaobiao.png'
@@ -35,10 +38,10 @@ export const partnerList = [
         name: '九江市融资担保有限公司',
         imgUrl: jjrd,
     },
-    {
-        name: '萍乡市汇源融资担保有限公司',
-        imgUrl: pxhy,
-    },
+    // {
+    //     name: '萍乡市汇源融资担保有限公司',
+    //     imgUrl: pxhy,
+    // },
     {
         name: '九江市浔阳区融资担保有限责任公司',
         imgUrl: jjxyrd,
@@ -72,6 +75,7 @@ export const productionList = [
     {
         title: '电子投标保函系统',
         pic: electronicSystem,
+        pic_mobile: electronicSystem_mobile,
         icon: system_icon,
         content:
             '电子保函办理服务平台在线提交保函申请，保费支付和保函出具，全程在线办理，手续简单便捷。',
@@ -79,6 +83,7 @@ export const productionList = [
     {
         title: '金融担保审批系统',
         pic: approvingSystem,
+        pic_mobile: approvingSystem_mobile,
         icon: danbao_icon,
         content:
             '打造担保交易、信用服务与大数据风控三位一体化金融审批系统。提供多种保函产品，为客户提供更加专业高效的保函服务。',
@@ -86,6 +91,7 @@ export const productionList = [
     {
         title: '招标查询系统—赣保通',
         pic: gbt,
+        pic_mobile: gbt_mobile,
         icon: gbt_icon,
         content: '打造江西一流招标信息查询系统',
     },
@@ -250,7 +256,7 @@ export const manpowerInfo = {
                     '有一定的项目管理经验，有金融行业经验优先；',
                 ],
                 workAddress:
-                    '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室',
+                    ['江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室'],
                 contactWay: [
                     '邮箱：23778989@qq.com 简历投递格式：意向岗位名称-姓名-联系方式-了解到该岗位的渠道',
                     '电话: 15170038339',

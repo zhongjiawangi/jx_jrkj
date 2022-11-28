@@ -12,6 +12,7 @@ export default {
       );
     },
     resizeHander() {
+      console.log(window.devicePixelRatio);
       let lastPixelRatio = window.devicePixelRatio;
       const _this = this;
       window.addEventListener('resize', function () {
@@ -31,7 +32,7 @@ export default {
     },
   },
   mounted() {
-    this.push()
+    // this.push()
   }
 }
 </script>

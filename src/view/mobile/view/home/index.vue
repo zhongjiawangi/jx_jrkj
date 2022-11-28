@@ -1,31 +1,9 @@
 <template>
   <div class="home-mobile">
     <!-- 加入我们 -->
-    <div class="join-us" @click="showJoin = true" v-show="!showJoin">
+    <div class="join-us" @click="goManpower" v-show="!showJoin">
       <img src="@/assets/icon_join.png" alt="">
     </div>
-    <van-overlay :show="showJoin" @click="showJoin = false">
-      <div class="personnel-management">
-        <h3 class="title">{{ personnelManagement.title }}</h3>
-        <p class="tip">{{ personnelManagement.tip }}</p>
-        <van-cell :title="personnelManagementDic.duty">
-          <template #label>
-            <p v-for="(item, index) in personnelManagement.duty" :key="index">
-              {{ index + 1 + '.' + item }}
-            </p>
-          </template>
-        </van-cell>
-        <van-cell :title="personnelManagementDic.Require">
-          <template #label>
-            <p v-for="(item, index) in personnelManagement.Require" :key="index">
-              {{ index + 1 + '.' + item }}
-            </p>
-          </template>
-        </van-cell>
-        <van-cell :title="personnelManagementDic.address" :label="personnelManagement.address" />
-        <van-cell :title="personnelManagementDic.connect" :label="personnelManagement.connect" />
-      </div>
-    </van-overlay>
     <!-- 顶部 -->
     <div class="top">
       <div class="logo">
@@ -41,8 +19,10 @@
     <!-- 扫码 -->
     <div class="popup">
       <van-popup v-model="show">
-        <img :src="contactCodeImg" alt="" style="width:100%">
-        <p>微信扫码咨询</p>
+        <div>
+          <img :src="contactCodeImg" alt="">
+          <p v-show="showAskingText">微信扫码咨询</p>
+        </div>
       </van-popup>
     </div>
     <!-- 轮播图 -->
@@ -54,7 +34,7 @@
           <img :src="carousel.imgurl" alt="图片未加载">
         </div>
         <div class="right">
-          <div class="btn round" @click="asking">立即咨询</div>
+          <div class="btn round" @click="asking(0)">立即咨询</div>
         </div>
       </div>
 
@@ -62,13 +42,13 @@
     <!-- 产品 -->
     <div class="production margin">
       <h3 class="title">产品介绍</h3>
-      <div class="item" v-for="(item, index) in productions" :key="index" @click="asking">
+      <div class="item" v-for="(item, index) in productions" :key="index" @click="asking(item.pic_mobile)">
         <div><img :src="item.icon" alt=""></div>
         <span>{{ item.title }}</span>
       </div>
     </div>
     <!-- 关于我们 -->
-    <div class="about margin">
+    <!-- <div class="about margin">
       <div class="title">关于我们</div>
       <div class="nav">
         <div class="nav-item" :class="active === item.title ? 'active' : ''" v-for="(item, index) in aboutList"
@@ -106,47 +86,75 @@
           </AboutItem>
         </div>
       </div>
-    </div>
-    <!-- <div class="about">
-      <div class="title">关于我们</div>
-      <div class="flex-box">
-        <div class="nav">
-          <div class="nav-item" :class="active === item.title ? 'active' : ''" v-for="(item, index) in aboutList"
-            :key="index" @click="active = item.title">
-            {{ item.title }}
-          </div>
-        </div>
-        <div class="contant-box">
-          <div v-for="(item, index) in aboutList" :key="index" :style="active === item.title ? 'height:100%' : ''">
-            <AboutItem v-if="active === item.title" :title='item.title' :text="item.text" :text1="item.text1"
-              :contant="item.contant">
-              <template v-if="item.title === '联系我们'" #top>
-                <div class="slot">
-                  <div class="center">
-                    <img src="@/assets/about_img/telephone.png" alt="">
-                  </div>
-                  <div>
-                    <p>客服热线:0791-8853610 / 13407938888</p>
-                    <p>邮箱:23778989@qq.com</p>
-                  </div>
-                </div>
-              </template>
-              <template v-if="item.title === '联系我们'" #contant>
-                <div class="slot">
-                  <div class="center">
-                    <img src="@/assets/about_img/address.png" alt="">
-                  </div>
-                  <div>
-                    <p>公司名称:江西江若科技有限公司</p>
-                    <p>联系地址:江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室</p>
-                  </div>
-                </div>
-              </template>
-            </AboutItem>
+    </div> -->
+    <div class="conpany-info">
+      <!-- 公司介绍 -->
+      <div class="introduce m-20">
+        <div class="title">{{ conpanyInfo.introduce.title }}</div>
+        <div class="contant">
+          <div class="item" v-for="(item, index) in conpanyInfo.introduce.data" :key="index">
+            <div class="left">
+              <div class="content">
+                <h3>{{ item.companyName }}</h3>
+                <p>{{ item.text }}</p>
+                <div class="index">{{ '0' + (index + 1) }}</div>
+              </div>
+            </div>
+            <div class="right">
+              <img :src="item.pic" alt="">
+            </div>
           </div>
         </div>
       </div>
-    </div> -->
+      <!-- 公司情况 -->
+      <div class="condition m-20">
+        <div class="title">{{ conpanyInfo.condition.title }}</div>
+        <div class="contant">
+          <div class="item" v-for="(item, index) in conpanyInfo.condition.data" :key="index">
+            <!-- <div class="index">{{ "0" + (index + 1) }}</div> -->
+            <div class="content">
+              <h3>{{ item.title }}</h3>
+              <p v-for="text in item.children" :key="text">
+                {{ text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 公司结构 -->
+      <div class="construction m-20">
+        <div class="title">{{ conpanyInfo.construction.title }}</div>
+        <div class="contant">
+          <div class="hierarchy">
+            <span>{{ conpanyInfo.construction.data.hierarchyName }}</span>
+          </div>
+          <div class="department" v-for="(child, index) in conpanyInfo.construction.data.children" :key="index">
+            <span>{{ child }}</span>
+          </div>
+        </div>
+      </div>
+      <!-- 公司定位 -->
+      <div class="position m-20">
+        <div class="title">{{ conpanyInfo.position.title }}</div>
+        <div class="content">
+          <h3>{{ conpanyInfo.position.data.title }}</h3>
+          <p v-for="item in conpanyInfo.position.data.children" :key="item">
+            {{ item }}
+          </p>
+        </div>
+      </div>
+      <!-- 理念与模式 -->
+      <div class="concept-model m-20">
+        <div class="title">{{ conpanyInfo.conceptModel.title }}</div>
+        <div class="contant">
+          <van-collapse v-model="activeName" accordion>
+            <van-collapse-item :title="item.title" :name="index" v-for="(item, index) in conpanyInfo.conceptModel.data" :key="index">
+              {{ item.content }}
+            </van-collapse-item>
+          </van-collapse>
+        </div>
+      </div>
+    </div>
     <!-- 合作机构 -->
     <div class="partner margin">
       <div class="title">合作机构</div>
@@ -206,63 +214,36 @@
 <script>
 import imgurl1 from '@/assets/home_img/img1.png'
 import contactCode from '@/assets/home_img/contactCode.jpg'
-import baohanImg from '@/assets/home_img/baohan.png'
-import danbaoImg from '@/assets/home_img/danbao.png'
-import zhaobiaoImg from '@/assets/home_img/zhaobiao.png'
 import gongzhonghao from '@/assets/QRCode.jpg'
 // 合作机构logo
-import { partnerList, queryList } from '@/info'
+import { partnerList, queryList, productionList, conpanyInfo } from '@/info'
 
 
-import AboutItem from './components/aboutItem.vue'
+// import AboutItem from './components/aboutItem.vue'
 
 export default {
   name: "HomeMobile",
-  components: {
-    AboutItem,
-  },
+  // components: {
+  //   AboutItem,
+  // },
   data() {
     return {
       show: false,
       showQuery: false,
       showJoin: false,
+      showAskingText: true,
       contactCodeImg: contactCode,
       gongzhonghaoImg: gongzhonghao,
-      active: "公司介绍",
+      // active: "公司介绍",
       actions: queryList,
-      // [
-      //   {
-      //     name: '剑邑快保',
-      //     url: 'https://www.ee.jxjrtech.com/#/query'
-      //   },
-      //   {
-      //     name: '九江工担',
-      //     url: 'https://ee.jjgdgs.com.cn/#/query'
-      //   },
-      //   {
-      //     name: '萍乡融担',
-      //     url: 'https://www.jxpxrd.com/#/query'
-      //   }
-      // ],
+      conpanyInfo: conpanyInfo,
+      activeName: '',
       carousel: {
         imgurl: imgurl1,
         text1: "江若科技是专业金融科技公司",
-        text2: "为金融机构提供电子投标保函系统、金融担保审批系统",
+        text2: "为金融机构提供电子投标保函系统、金融担保审批系统，赣保通",
       },
-      productions: [
-        {
-          title: "电子投标保函系统",
-          icon: baohanImg,
-        },
-        {
-          title: "金融担保审批系统",
-          icon: danbaoImg,
-        },
-        {
-          title: '招标查询系统—赣标通',
-          icon: zhaobiaoImg
-        }
-      ],
+      productions: productionList,
       aboutList: [
         {
           title: "公司介绍",
@@ -284,30 +265,6 @@ export default {
         },
       ],
       partners: partnerList,
-      personnelManagement: {
-        title: '开发负责人（南昌）',
-        tip: '开发负责人（南昌）| 1名 | 8k-15k（14薪）',
-        duty: [
-          "负责公司技术部人员管理，分配任务，制定计划；",
-          "负责公司信息化软件的管理（主要技术已经给第三方公司做，加入项目组接手项目）；",
-          "负责公司信息化软件的开发，根据需要迭代升级系统。",
-          "根据公司业务发展，开发其他系统、网站等。",
-        ],
-        Require: [
-          "熟悉Java开发语言，掌握Java基础、IO,多线程、集合、JVM等，熟悉面向对象程序设计；",
-          "熟练使用Springboot，Mybatis,Dubbo,Springcloud等主流框架；",
-          "熟悉Redis等常用的中间件；熟悉Mysql，Linux等；",
-          "有一定的项目管理经验。",
-        ],
-        address: '江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1003室',
-        connect: '简历投递邮箱：23778989@qq.com 投递格式：意向岗位名称-姓名-联系方式-了解到该岗位的渠道（官网）'
-      },
-      personnelManagementDic: {
-        duty: '【岗位职责】',
-        Require: '【任职要求】',
-        address: '【工作地址】',
-        connect: '【联系方式】'
-      },
       address: {
         icon: "el-icon-location-outline",
         address: "江西省南昌市红谷滩区凤凰中大道1000号南昌万达中心B3写字楼-1004室",
@@ -323,7 +280,17 @@ export default {
     };
   },
   methods: {
-    asking() {
+    goManpower() {
+      this.$router.push({ path: "/mobile/manpower" })
+    },
+    asking(url) {
+      if (url) {
+        this.contactCodeImg = url
+        this.showAskingText = false
+      } else {
+        this.contactCodeImg = contactCode
+        this.showAskingText = true
+      }
       this.show = true;
     },
     onSelect(item) {
@@ -451,6 +418,17 @@ export default {
     font-size: 18px;
     text-align: center;
 
+    div {
+      width: 80%;
+      background-color: transparent;
+      margin: 0 auto;
+      // height: 50vh;
+    }
+
+    img {
+      width: 100%;
+    }
+
     p {
       padding-bottom: 10px;
     }
@@ -529,64 +507,209 @@ export default {
     }
   }
 
-  .about {
-    min-height: 350px;
-
-    .center {
-      display: flex;
-      align-items: center;
-      margin-right: 5px;
+  .conpany-info {
+    padding: 0 20px;
+    font-size: 14px;
+    .m-20 {
+      margin: 40px 0;
     }
+    .introduce {
+      .item {
+        margin-bottom: 40px;
 
-    .nav {
-      display: flex;
-      justify-content: space-around;
-      color: #fff;
+        .left {
+          // width: 50%;
 
-      .nav-item {
-        padding: 20px 5px;
-        font-size: 20px;
-      }
+          .content {
+            position: relative;
+            box-shadow: 2px 2px 15px rgba(105, 150, 228, .5);
+            border-radius: 20px;
+            padding: 10px 40px;
+            margin-left: 20px;
 
-      .active {
-        display: flex;
-        align-items: center;
-        color: #ce8a3c;
-        transform: scale(1.1)
-      }
+            h3 {
+              color: rgb(105, 150, 228);
+              margin: 10px 0;
+              font-size: 18px;
+            }
 
-      .active::before {
-        content: '';
-        margin-right: 10px;
-        width: 6px;
-        height: 6px;
-        border: 3px solid #ce8a3c;
-        border-radius: 50%;
-      }
-    }
+          }
 
-    .contant-box {
-      flex: 1;
-
-      .slot {
-        display: flex;
-        margin: 15px 0;
-
-        * {
-          margin: 0;
+          .index {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            border-radius: 50%;
+            background-color: rgb(101, 147, 227);
+          }
         }
 
-        img {
-          width: 35px;
+        .right {
+          flex: 1;
+          padding: 20px;
+
+          img {
+            width: 100%;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    .condition {
+      padding: 0 20px;
+
+      .item {
+        margin-bottom: 30px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 2px 2px 15px rgba(105, 150, 228, .5);
+        border-radius: 20px;
+
+        .content {
+          * {
+            margin: 8px 0;
+          }
+
+          h3 {
+            margin: 8px 0;
+            font-size: 18px;
+            // border-bottom: 1px solid #fff;
+          }
+        }
+      }
+    }
+
+    .construction {
+      text-align: center;
+
+      span {
+        padding: 5px 10px;
+        display: inline-block;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, .5);
+      }
+
+      .hierarchy {
+        font-size: 18px;
+        margin-bottom: 20px;
+
+        span {
+          padding: 10px 20px;
+        }
+      }
+
+      .department {
+        display: inline-block;
+        width: 50%;
+        margin-bottom: 15px;
+      }
+    }
+
+    .position {
+      text-align: center;
+      padding: 0 20px;
+
+      .content {
+        box-shadow: 2px 2px 15px rgba(105, 150, 228, .5);
+        border-radius: 20px;
+        padding: 20px 0;
+
+        h3 {
+          margin-bottom: 15px;
+          font-size: 24px;
+          white-space: nowrap;
         }
 
         p {
-          margin: 5px 0;
-          // text-align: center;
+          margin-top: 20px;
+          font-size: 14px;
+          white-space: nowrap;
         }
       }
     }
+    .concept-model {
+      padding: 0 20px;
+      /deep/ .van-cell, /deep/.van-collapse-item__content {
+        background-color: transparent;
+      }
+      /deep/ .van-collapse-item__content {
+        color: 666;
+      }
+
+      .contant {
+        // border: 1px solid #fff;
+        box-shadow: 2px 2px 15px rgba(105, 150, 228, .5);
+        // border-radius: 10px;
+      }
+    }
   }
+
+  // .about {
+  //   min-height: 350px;
+
+  //   .center {
+  //     display: flex;
+  //     align-items: center;
+  //     margin-right: 5px;
+  //   }
+
+  //   .nav {
+  //     display: flex;
+  //     justify-content: space-around;
+  //     color: #fff;
+
+  //     .nav-item {
+  //       padding: 20px 5px;
+  //       font-size: 20px;
+  //     }
+
+  //     .active {
+  //       display: flex;
+  //       align-items: center;
+  //       color: #ce8a3c;
+  //       transform: scale(1.1)
+  //     }
+
+  //     .active::before {
+  //       content: '';
+  //       margin-right: 10px;
+  //       width: 6px;
+  //       height: 6px;
+  //       border: 3px solid #ce8a3c;
+  //       border-radius: 50%;
+  //     }
+  //   }
+
+  //   .contant-box {
+  //     flex: 1;
+
+  //     .slot {
+  //       display: flex;
+  //       margin: 15px 0;
+
+  //       * {
+  //         margin: 0;
+  //       }
+
+  //       img {
+  //         width: 35px;
+  //       }
+
+  //       p {
+  //         margin: 5px 0;
+  //         // text-align: center;
+  //       }
+  //     }
+  //   }
+  // }
 
   .partner {
     .item-box {
@@ -676,6 +799,10 @@ export default {
 
       div {
         margin-bottom: 10px;
+      }
+
+      a {
+        color: #999;
       }
     }
   }

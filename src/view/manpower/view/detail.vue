@@ -8,7 +8,13 @@
         </span>
       </div>
       <div class="info">
-        <div class="item">
+        <div class="item" v-for="(value, key) in detailDic" :key="key">
+          <p>{{ value }}:</p>
+          <p v-for="(item, index) in info.detail[key]" :key="index">
+            {{ index + 1 }}.{{ item }}
+          </p>
+        </div>
+        <!-- <div class="item">
           <p>职责描述:</p>
           <p v-for="(item, index) in info.detail.jobDescription" :key="index">
             {{ index + 1 }}.{{ item }}
@@ -29,7 +35,7 @@
           <p v-for="(way, index) in info.detail.contactWay" :key="way">
             {{ index + 1 + '.' + way }}
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -42,6 +48,12 @@ export default {
   data() {
     return {
       info: {},
+      detailDic: {
+        jobDescription: '职责描述',
+        jobRequirements: '任职要求',
+        workAddress: '工作地址',
+        contactWay: '联系方式'
+      }
     };
   },
   methods: {
