@@ -140,7 +140,7 @@ export default {
       {
         imgurl: imgurl1,
         text1: '江若科技是专业金融科技公司',
-        text2: '为金融机构提供电子投标保函系统、金融担保审批系统，赣保通',
+        text2: '为金融机构提供电子投标保函系统、金融担保审批系统，赣标通',
       },
       productionList,
       // stepInfo: [
@@ -398,7 +398,7 @@ export default {
 
         img {
           max-width: 100%;
-          // height: 200px;
+          max-height: 130px;
         }
       }
 

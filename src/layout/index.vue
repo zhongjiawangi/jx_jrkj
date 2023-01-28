@@ -155,6 +155,7 @@ export default {
 
         img {
           width: 52px;
+          margin-right: 10px;
         }
 
         span {

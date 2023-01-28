@@ -42,7 +42,7 @@
     <!-- 产品 -->
     <div class="production margin">
       <h3 class="title">产品介绍</h3>
-      <div class="item" v-for="(item, index) in productions" :key="index" @click="asking(item.pic_mobile)">
+      <div class="item" v-for="(item, index) in productions" :key="index">
         <div><img :src="item.icon" alt=""></div>
         <span>{{ item.title }}</span>
       </div>
@@ -100,9 +100,6 @@
                 <div class="index">{{ '0' + (index + 1) }}</div>
               </div>
             </div>
-            <div class="right">
-              <img :src="item.pic" alt="">
-            </div>
           </div>
         </div>
       </div>
@@ -110,19 +107,13 @@
       <div class="condition m-20">
         <div class="title">{{ conpanyInfo.condition.title }}</div>
         <div class="contant">
-          <div class="item" v-for="(item, index) in conpanyInfo.condition.data" :key="index">
-            <!-- <div class="index">{{ "0" + (index + 1) }}</div> -->
-            <div class="content">
-              <h3>{{ item.title }}</h3>
-              <p v-for="text in item.children" :key="text">
-                {{ text }}
-              </p>
-            </div>
-          </div>
+          <p>人员数量： 100+</p>
+          <p>对外合作： 8家</p>
+          <p>服务企业： 10000+</p>
         </div>
       </div>
       <!-- 公司结构 -->
-      <div class="construction m-20">
+      <!-- <div class="construction m-20">
         <div class="title">{{ conpanyInfo.construction.title }}</div>
         <div class="contant">
           <div class="hierarchy">
@@ -132,19 +123,18 @@
             <span>{{ child }}</span>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- 公司定位 -->
       <div class="position m-20">
         <div class="title">{{ conpanyInfo.position.title }}</div>
         <div class="content">
-          <h3>{{ conpanyInfo.position.data.title }}</h3>
-          <p v-for="item in conpanyInfo.position.data.children" :key="item">
-            {{ item }}
-          </p>
+          <p>1.电子保函系统：从投标保函系统向担保公司核心业务系统延申</p>
+          <p>2.赣标通：通过数据挖掘、分析等，深度服务建筑企业，同时营销保函</p>
+          <p>3.金融监管系统：服务金融监督管理部门，建设行业管理软件</p>
         </div>
       </div>
       <!-- 理念与模式 -->
-      <div class="concept-model m-20">
+      <!-- <div class="concept-model m-20">
         <div class="title">{{ conpanyInfo.conceptModel.title }}</div>
         <div class="contant">
           <van-collapse v-model="activeName" accordion>
@@ -153,7 +143,7 @@
             </van-collapse-item>
           </van-collapse>
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- 合作机构 -->
     <div class="partner margin">
@@ -241,7 +231,7 @@ export default {
       carousel: {
         imgurl: imgurl1,
         text1: "江若科技是专业金融科技公司",
-        text2: "为金融机构提供电子投标保函系统、金融担保审批系统，赣保通",
+        text2: "为金融机构提供电子投标保函系统、金融担保审批系统，赣标通",
       },
       productions: productionList,
       aboutList: [
@@ -326,7 +316,7 @@ export default {
   .join-us {
     position: fixed;
     top: 60%;
-    right: 10px;
+    right: 20px;
     z-index: 10;
     width: 50px;
     height: 50px;
@@ -390,15 +380,16 @@ export default {
   }
 
   .top {
-    padding: 20px 10px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
 
     .logo {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       font-size: 20px;
-
+      width: 120px;
       img {
         width: 30px;
       }
@@ -435,7 +426,7 @@ export default {
   }
 
   .carousel {
-    padding: 10px;
+    padding: 20px;
     min-height: 300px;
     background-color: rgb(28, 102, 222);
     color: white;
@@ -510,9 +501,11 @@ export default {
   .conpany-info {
     padding: 0 20px;
     font-size: 14px;
+
     .m-20 {
       margin: 40px 0;
     }
+
     .introduce {
       .item {
         margin-bottom: 40px;
@@ -566,23 +559,14 @@ export default {
     .condition {
       padding: 0 20px;
 
-      .item {
+      .contant {
         margin-bottom: 30px;
         padding: 10px;
         text-align: center;
         box-shadow: 2px 2px 15px rgba(105, 150, 228, .5);
         border-radius: 20px;
-
-        .content {
-          * {
-            margin: 8px 0;
-          }
-
-          h3 {
-            margin: 8px 0;
-            font-size: 18px;
-            // border-bottom: 1px solid #fff;
-          }
+        p:nth-child(2n) {
+          margin: 10px 0;
         }
       }
     }
@@ -620,7 +604,7 @@ export default {
       .content {
         box-shadow: 2px 2px 15px rgba(105, 150, 228, .5);
         border-radius: 20px;
-        padding: 20px 0;
+        padding: 20px;
 
         h3 {
           margin-bottom: 15px;
@@ -631,15 +615,19 @@ export default {
         p {
           margin-top: 20px;
           font-size: 14px;
-          white-space: nowrap;
+          // white-space: nowrap;
         }
       }
     }
+
     .concept-model {
       padding: 0 20px;
-      /deep/ .van-cell, /deep/.van-collapse-item__content {
+
+      /deep/ .van-cell,
+      /deep/.van-collapse-item__content {
         background-color: transparent;
       }
+
       /deep/ .van-collapse-item__content {
         color: 666;
       }
@@ -730,6 +718,7 @@ export default {
 
         img {
           max-width: 100%;
+          max-height: 100%;
         }
 
         .partner-name {
