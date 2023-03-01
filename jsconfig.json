@@ -8,6 +8,9 @@
       "@/*": [
         "src/*"
       ],
+      "img/*": [
+        "public/img/*"
+      ],
     },
     "lib": [
       "esnext",

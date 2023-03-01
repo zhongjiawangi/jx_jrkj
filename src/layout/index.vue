@@ -52,6 +52,10 @@ export default {
           children: queryList
         },
         {
+          name: '招标信息',
+          url: '/project',
+        },
+        {
           name: '公司简介',
           url: '/introduction',
         },
@@ -138,7 +142,7 @@ export default {
     top: 0;
     height: 100px;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
     background-color: rgb(28, 102, 222);
     box-shadow: 0px 2px 12px rgba(0, 0, 0, .1);
 

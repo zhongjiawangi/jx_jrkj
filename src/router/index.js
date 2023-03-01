@@ -8,6 +8,9 @@ const Home = () => import("@/view/home/index.vue");
 const About = () => import("@/view/about/index.vue");
 const Manpower = () => import("@/view/manpower/index.vue");
 const ManpowerList = () => import("@/view/manpower/view/list");
+const project = () => import("@/view/project/index");
+const projectList = () => import("@/view/project/view/list");
+const projectDetail = () => import("@/view/project/view/detail");
 const Mobile = () => import("@/view/mobile/index.vue");
 // const Query = () => import("@/view/mobile/view/query");
 // const Info = () => import("@/view/mobile/view/query/info.vue");
@@ -46,6 +49,29 @@ const routes = [
     path: "/",
     component: Layout,
     children: [
+      {
+        path: "/project",
+        component: project,
+        redirect: "/project/list",
+        children: [
+          {
+            path: "/project/list",
+            meta: {
+              name: "项目列表",
+              rolePath: "/project",
+            },
+            component: projectList,
+          },
+          {
+            path: "/project/detail",
+            meta: {
+              name: "项目详情",
+              rolePath: "/project",
+            },
+            component: projectDetail,
+          },
+        ],
+      },
       {
         path: "/",
         name: "主页",

@@ -194,7 +194,7 @@
         </div>
       </div>
       <div class="filing-information">
-        <div>Copyright ©2022 江西江若科技有限公司 版权所有</div>
+        <div>Copyright ©2023 江西江若科技有限公司 版权所有</div>
         <a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2022005510号-1</a>
       </div>
     </div>
